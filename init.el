@@ -1,6 +1,12 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
+(setq package-archives
+
+      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+        ("org-cn"   . "http://elpa.emacs-china.org/org/")
+        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+
 (doom! :feature
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
@@ -32,7 +38,7 @@
        nav-flash         ; blink the current line after jumping
        posframe          ; use child frames where possible (Emacs 26+ only)
        ;tabbar            ; FIXME an (incomplete) tab bar for Emacs
-       ;unicode           ; extended unicode support for various languages
+       unicode           ; extended unicode support for various languages
        window-select     ; visually switch windows
 
        :tools
@@ -52,15 +58,16 @@
        term              ; terminals in Emacs
        tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
+       reference
 
        :lang
        assembly          ; assembly for fun or debugging
-       ;cc                ; C/C++/Obj-C madness
+       ;cc                ; c/c++/obj-c madness
        clojure           ; java with a lisp
        data              ; config/data formats
        emacs-lisp        ; drown in parentheses
        ess               ; emacs speaks statistics
-       (haskell +intero) ; a language that's lazier than I am
+       (haskell +intero) ; a language that's lazier than i am
        hy                ; readability of scheme w/ speed of python
        julia             ; a better, faster MATLAB
        latex             ; writing papers in Emacs has never been so fun

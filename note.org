@@ -136,7 +136,26 @@ org-mode导出到任意格式文档。
 和 ~org-tree-slide~ 的功能好像。
 
 *** TODO org-ref
-依赖于Helm，所以必须得安装Helm。
+#+begin_src emacs-lisp :tangle yes
+(setq reftex-default-bibliography bibliography-file)  ; 设置存放bibtex的文件目录
+(setq org-ref-default-bibliography bibliography-file) ; 设置存放bibtex的文件路径
+#+end_src
+
+可以正常插入文献引用，但是遇到一些问题：
+- 鼠标点击引用之后， ~org-ref-cite-candidates~ 会报错。
+
+引用类型什么鬼？ ~org-ref-cite-types~
+cite replace 什么鬼？ 
+
+**** 笔记
+对于其它字段（搜索），需要在 ~bibtex-completion-additional-search-fields~ 里中定义。
+
+**** Commands
++ ~org-ref-bibliography~ :: 从org生成bibliography的索引（大概）
++ ~org-ref-helm-insert-cite-link~ :: "C-c ]" 插入文献引用，比如cite:dupoux16_cognit_scien_era_artif_intel。
++ ~org-ref-sort-citaion-link~ :: which will sort the keys by year, oldest to newest.
+
+
 
 *** TODO org-web-tools
 This file contains library functions and commands useful for retrieving web page content and processing it into Org-mode content.
@@ -180,6 +199,7 @@ You know. Jupyter.
 
 ** magit & github
 
+** Projectile & Project Management
 ** write module
 
 ** lispy
@@ -210,3 +230,6 @@ company的补全功能是真的很好用。
 ** posframe
 - ivy-posframe :: keeping default configuration
 - company-childframe :: keeping default configuration
+     
+** hydra
+感觉需要配合vim键位，不喜欢。
