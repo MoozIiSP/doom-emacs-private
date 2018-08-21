@@ -24,10 +24,15 @@
   (package! org-clock-convenience)
   (package! ob-ipython)                 ; NOTE between ob-ipython and lpy
   (package! ob-translate)
-  (package! cdlatex)                    ; NOTE combine cdlatex and auctex
-  )
+  (package! cdlatex))                    ; NOTE combine cdlatex and auctex
+
 
 (package! tldr)
 
-(package! ivy-bibtex)
-(package! org-ref :recipe (:fetcher github :repo "jkitchin/org-ref" :files ("*")))
+;; FIXME in the future
+;;(when (featurep! :completion ivy)
+;;  (package! ivy-bibtex))
+;;(package! org-ref :recipe (:fetcher github :repo "fuxialexander/org-ref" :files ("*")))
+
+(package! eaf :recipe (:fetcher github :repo "manateelazycat/emacs-application-framework" :files ("*")))
+

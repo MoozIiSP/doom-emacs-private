@@ -2,8 +2,20 @@
 
 (global-set-key (kbd "C-s") 'swiper)
 
+;; FIXME Test eaf on doom-emacs
+(require 'eaf)
+
+
 (when (featurep! :ui doom)
-  (setq doom-theme 'doom-peacock))
+  (setq doom-theme 'doom-nord-light)
+  (setq doom-font (font-spec :family "Noto Sans Mono" :size 17)
+        doom-variable-pitch-font (font-spec :family "Noto Sans"
+                                            :size 20
+                                            :width 'extra-condensed
+                                            :weight 'normal
+                                            :slant 'normal)
+        doom-unicode-font (font-spec :family "Noto Sans Mono" :size 17)
+        doom-big-font (font-spec :family "Noto Sans Mono" :size 23)))
 
 (when (featurep! :ui posframe)
   (push '(swiper . ivy-posframe-display-at-frame-center) ivy-display-functions-alist))
