@@ -1,5 +1,7 @@
 ;;;  -*- lexical-binding: t; -*-
 
+(package! habitica)
+
 (package! lsp-mode)
 (package! lsp-ui)
 ;; lsp ext
@@ -7,14 +9,22 @@
 
 ;; for lsp
 (when (featurep! :completion company)
-  (package! company-lsp))
+  (package! company-lsp)
+  (package! company-posframe))
 
+(when (featurep! :completion helm)
+  (package! helm-posframe))
 
 (when (featurep! :lang python)
   (package! conda)
   (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))                        ; NOTE
-  (package! yapfify))
+  (package! yapfify)
+  (package! py-isort))
 
+;; (package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
+;;(add-to-list 'load-path (expand-file-name "~/.doom.d/manual"))
+;;(require 'awesome-tab)
+;;(setq awesome-tab-background-color 'blac)
 
 (when (featurep! :lang org)
   ;(package! ivy-bibtex)
@@ -26,7 +36,7 @@
   (package! ob-translate)
   (package! cdlatex))                    ; NOTE combine cdlatex and auctex
 
-
+;; command tldr
 (package! tldr)
 
 ;; FIXME in the future
@@ -35,4 +45,9 @@
 ;;(package! org-ref :recipe (:fetcher github :repo "fuxialexander/org-ref" :files ("*")))
 
 (package! eaf :recipe (:fetcher github :repo "manateelazycat/emacs-application-framework" :files ("*")))
-
+;;(package! processing-mode :recipe (:fetcher github :repo "KevOrr/processing2-emacs" :files ("*")))
+;;(package! rmsbolt :recipe (:fetcher gitlab :repo "jgkamat/rmsbolt"))
+;; (quelpa '(rmsbolt
+;;           :files (:defaults "starters")
+;;           :fetcher gitlab
+;;           :repo "jgkamat/rmsbolt"))

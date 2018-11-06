@@ -1,9 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
-(setq package-archives
-      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-        ("org-cn"   . "http://elpa.emacs-china.org/org/")
-        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+;; (setq package-archives
+;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+;;         ("org-cn"   . "http://elpa.emacs-china.org/org/")
+;;         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 
 (doom! :feature
       ;debugger          ; FIXME stepping through code, to help you add bugs
@@ -26,7 +26,7 @@
         +fuzzy)          ; enable fuzzy search backend for helm
       ;ido               ; the other *other* search engine...
       ;(ivy              ; a search engine for love and life
-      ; +fuzzy)          ; enable fuzzy search backend for ivy
+      ; +fuzzy          ; enable fuzzy search backend for ivy
 
        :ui
        doom              ; what makes DOOM look the way it does
@@ -36,7 +36,7 @@
        ;evil-goggles      ; display visual hints when editing in evil
       ;fci               ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
-       modeline          ; snazzy, Atom-inspired modeline, plus API
+       ;modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
       ;neotree           ; a project drawer, like NERDTree for vim
        treemacs          ; a project drawer, like neotree but cooler
@@ -82,7 +82,7 @@
 
        :lang
       ;assembly          ; assembly for fun or debugging
-      ;(cc +irony +rtags); C/C++/Obj-C madness
+       (cc +irony +rtags); C/C++/Obj-C madness
        common-lisp       ; if you've seen one lisp, you've seen them all
       ;crystal           ; ruby at the speed of c
       ;clojure           ; java with a lisp
@@ -114,7 +114,7 @@
         +present)        ; Emacs for presentations
       ;perl              ; write code no one else can comprehend
       ;php               ; perl's insecure younger brother
-      ;plantuml          ; diagrams for confusing people more
+       plantuml          ; diagrams for confusing people more
       ;purescript        ; javascript, but functional
        python            ; beautiful is better than ugly
        qt                ; the 'cutest' gui framework ever

@@ -5,20 +5,54 @@
 ;; FIXME Test eaf on doom-emacs
 (require 'eaf)
 
+;; TODO support processing
+(add-to-list 'load-path "~/.doom.d/local/processing2-emacs")
+(autoload 'processing-mode "processing-mode" "Processing mode" t)
+(add-to-list 'auto-mode-alist '("\\.pde$" . processing-mode))
+(autoload 'processing-snippets-initialize "processing-snippets" nil nil nil)
+(eval-after-load 'yasnippet '(processing-snippets-initialize))
+(setq processing-location "/usr/bin/processing-java")
+(setq processing-application-dir "/usr/share/processing")
+(setq processing-sketchbook-dir "~/GitRepos/book")
+(setq processing-output-dir "/tmp")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (defun processing-mode-init ()                                  ;;
+;;   "Doc."                                                        ;;
+;;   (make-local-variable 'ac-sources)                             ;;
+;;   (setq ac-sources '(ac-source-dictionary ac-source-yasnippet)) ;;
+;;   (make-local-variable 'ac-user-dictionary)                     ;;
+;;   (setq ac-user-dictionary (append processing-functions         ;;
+;;                                    processing-builtins          ;;
+;;                                    processing-constants)))      ;;
+;;                                                                 ;;
+;; (add-to-list 'company-mode 'processing-mode)                    ;;
+;; (add-hook 'processing-mode-hook 'processing-mode-init)          ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(when (featurep! :ui doom)
-  (setq doom-theme 'doom-nord-light)
-  (setq doom-font (font-spec :family "Noto Sans Mono" :size 17)
-        doom-variable-pitch-font (font-spec :family "Noto Sans"
-                                            :size 20
-                                            :width 'extra-condensed
-                                            :weight 'normal
-                                            :slant 'normal)
-        doom-unicode-font (font-spec :family "Noto Sans Mono" :size 17)
-        doom-big-font (font-spec :family "Noto Sans Mono" :size 23)))
+;; FIXME Unicode bugs
+(set-charset-priority 'unicode-bmp)
 
+;; Base configuration for doom
+(setq doom-theme 'doom-opera)
+(setq doom-font (font-spec :family "Noto Sans Mono" :size 19)
+      doom-variable-pitch-font (font-spec :family "Noto Sans"
+                                          :size 22
+                                          :width 'extra-condensed
+                                          :weight 'normal
+                                          :slant 'normal)
+      doom-unicode-font (font-spec :family "Noto Sans Mono" :size 19)
+      doom-big-font (font-spec :family "Noto Sans Mono" :size 25))
+
+
+;; TODO Add julia and racket support.
+
+;; TODO Use helm-posframe
 (when (featurep! :ui posframe)
   (push '(swiper . ivy-posframe-display-at-frame-center) ivy-display-functions-alist))
+(when (featurep! :completion helm)
+  (helm-posframe-enable))
+(when (featurep! :completion company)
+  (company-posframe-mode t))
 
 ;; FIXME conda
 ;; Cannot use pylint
@@ -266,11 +300,11 @@ _o_: Open entry   _e_: Email entry  ^ ^                 _q_: quit
     (setq bibtex-completion-format-citation-functions
           '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
             (default       . bibtex-completion-format-citation-default))
-        bibtex-completion-bibliography (car org-ref-default-bibliography)
-        bibtex-completion-library-path org-ref-pdf-directory
-        bibtex-completion-notes-path org-ref-bibliography-notes
-        bibtex-completion-pdf-field "file"
-        bibtex-completion-pdf-open-function (lambda (fpath) (start-process "open" "*open*" "open" fpath))))
+          bibtex-completion-bibliography (car org-ref-default-bibliography)
+          bibtex-completion-library-path org-ref-pdf-directory
+          bibtex-completion-notes-path org-ref-bibliography-notes
+          bibtex-completion-pdf-field "file"
+          bibtex-completion-pdf-open-function (lambda (fpath) (start-process "open" "*open*" "open" fpath))))
 
   (ivy-set-actions 'org-ref-ivy-insert-cite-link org-ref-ivy-cite-actions)
 
@@ -291,4 +325,3 @@ prefix ARG is used, which uses `org-ref-default-bibliography'."
               :caller 'org-ref-ivy-insert-cite-link))
 
   (ivy-set-display-transformer 'org-ref-ivy-insert-cite-link 'ivy-bibtex-display-transformer))
-
