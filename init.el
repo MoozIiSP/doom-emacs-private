@@ -71,7 +71,7 @@
        ;;ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
        ;;eshell            ; a consistent, cross-platform shell (WIP)
-       hideshow          ; basic code-folding support
+       hideshow          ; TESTING basic code-folding support
        imenu             ; an imenu sidebar and searchable code index `imenu-anywhere|imenu-list'
        term              ; terminals in Emacs `multi-term'
        vc                ; TESTING version-control and Emacs, sitting in a tree
@@ -93,6 +93,7 @@
        ;;wakatime          ; FIXME record your code life
 
        :lang
+       ;;lsp             ; TODO IDE-like experience
        ;;assembly          ; assembly for fun or debugging
        (cc               ; C/C++/Obj-C madness
         +irony)           ; TESTING
@@ -117,7 +118,8 @@
         +present)        ; Emacs for presentations
        ;;perl              ; write code no one else can comprehend
        ;;plantuml          ; diagrams for confusing people more
-       python            ; beautiful is better than ugly
+       (python           ; beautiful is better than ugly
+        +conda)          ; scientific package management
        qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
        ;rest              ; Emacs as a REST client

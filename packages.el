@@ -20,20 +20,24 @@
 ;;
 ;; `swiper-helm' is provided by `helm'.
 
-(when (featurep! :tool lsp)
+(when (featurep! :lang lsp)
   (package! company-lsp)
   (package! lsp-mode)
   (package! lsp-ui)
 
 ;;; `:lang'
   (when (featurep! :lang python)
-    (package! conda)
     (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))                        ; NOTE
     (package! yapfify)
     (package! py-isort)))
 
+;; TODO
+(package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))
+(package! yapfify)
+(package! py-isort)
+
 (when (featurep! :lang org)
-  ;(package! ivy-bibtex)
+                                        ;(package! ivy-bibtex)
   (package! org-web-tools)
   (package! org-brain)
   (package! org-super-agenda)
