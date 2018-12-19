@@ -1,30 +1,36 @@
 ;;;  -*- lexical-binding: t; -*-
 
+;;; `:enhance'
 (package! habitica)
 
-(package! lsp-mode)
-(package! lsp-ui)
-;; lsp ext
-(package! lsp-python)
+;;; `:emacs'
+(package! dired-single)
 
-;; for lsp
-(when (featurep! :completion company)
-  (package! company-lsp)
-  (package! company-posframe))
-
-(when (featurep! :completion helm)
-  (package! helm-posframe))
-
-(when (featurep! :lang python)
-  (package! conda)
-  (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))                        ; NOTE
-  (package! yapfify)
-  (package! py-isort))
-
-;; (package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
+;;; `:ui'
+;;(package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
 ;;(add-to-list 'load-path (expand-file-name "~/.doom.d/manual"))
 ;;(require 'awesome-tab)
 ;;(setq awesome-tab-background-color 'blac)
+
+;;; `:completion' LSP Client Support
+;; default configuration already provide `+childframe' to enable this feature.
+;; (when (featurep! :completion helm)
+;;   (package! helm-posframe))
+;; (package! company-posframe)
+;;
+;; `swiper-helm' is provided by `helm'.
+
+(when (featurep! :tool lsp)
+  (package! company-lsp)
+  (package! lsp-mode)
+  (package! lsp-ui)
+
+;;; `:lang'
+  (when (featurep! :lang python)
+    (package! conda)
+    (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))                        ; NOTE
+    (package! yapfify)
+    (package! py-isort)))
 
 (when (featurep! :lang org)
   ;(package! ivy-bibtex)
