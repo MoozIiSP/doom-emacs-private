@@ -27,7 +27,8 @@
 
 ;;; `:lang'
   (when (featurep! :lang python)
-    (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))                        ; NOTE
+    ; NOTE
+    (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))
     (package! yapfify)
     (package! py-isort)))
 
@@ -37,7 +38,8 @@
 (package! py-isort)
 
 (when (featurep! :lang org)
-                                        ;(package! ivy-bibtex)
+  ;;(package! ivy-bibtex)
+  (package! org-noter)
   (package! org-web-tools)
   (package! org-brain)
   (package! org-super-agenda)
@@ -54,7 +56,7 @@
 ;;  (package! ivy-bibtex))
 ;;(package! org-ref :recipe (:fetcher github :repo "fuxialexander/org-ref" :files ("*")))
 
-(package! eaf :recipe (:fetcher github :repo "manateelazycat/emacs-application-framework" :files ("*")))
+;;(package! eaf :recipe (:fetcher github :repo "manateelazycat/emacs-application-framework" :files ("*")))
 ;;(package! processing-mode :recipe (:fetcher github :repo "KevOrr/processing2-emacs" :files ("*")))
 ;;(package! rmsbolt :recipe (:fetcher gitlab :repo "jgkamat/rmsbolt"))
 ;; (quelpa '(rmsbolt

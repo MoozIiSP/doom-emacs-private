@@ -1,9 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
-;; (setq package-archives
-;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-;;         ("org-cn"   . "http://elpa.emacs-china.org/org/")
-;;         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+(setq package-archives
+      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+        ("org-cn"   . "http://elpa.emacs-china.org/org/")
+        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 
 (doom! :feature
        ;;debugger        ; FIXME stepping through code, to help you add bugs
@@ -47,10 +47,7 @@
        (popup            ; TESTING tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       (pretty-code      ; replace bits of code with pretty symbols
-        +fira            ; TESTING add fira font support
-        +iosevka         ; TESTING
-        +pragmata-pro)   ; TESTING
+       pretty-code       ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe `git-gutter-fringe'
@@ -58,7 +55,7 @@
        window-select     ; visually switch windows `ace-window'
 
        :editor
-       format            ; TESTING
+       (format +onsave)  ; TESTING
        lispy             ; TESTING
        multiple-cursors  ; TESTING editing in many places at once
        parinfer          ; TESTING turn lisp into python, sort of
@@ -154,4 +151,5 @@
        ;; and additional ex commands for evil-mode. Use it as a reference for
        ;; your own modules.
        ;; old: (default +bindings +snippets +evil-commands))
-       (default +bindings +snippets))
+       ;; last edit: (default +bindings +snippets)
+       (default +bindings +smartparens))
