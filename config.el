@@ -37,30 +37,25 @@
 ;; bullets is too small
 (setq org-bullets-bullet-list '("⚀" "⚁" "⚂" "⚃" "⚄" "⚅"))
 ;; TODO `org-capture' capture note and insipron.
-;;(server-start)
-;;(require 'org-protocol)
+(server-start)
+(require 'org-protocol)
 (setq org-directory "~/GitRepos/philosophers-stone")
 (setq org-agenda-files '("~/GitRepos/philosophers-stone/personal/flow"))
 (setq org-capture-templates
-      '(;; 存放在相应headline节点下，%i的作用是？%a是一个ref链接
-        ("n" "Note" entry (file+datetree "~/GitRepos/philosophers-stone/personal/flow/inbox.org")
-         "* %^{Title}\n#+begin_quote\n%i\n\nSource: %u, %a\n#+end_quote\n %?"
+      `(;; 存放在相应headline节点下，%i的作用是？%a是一个ref链接
+        ("n" "Note" entry (file+datetree ,(expand-file-name "personal/flow/inbox.org" org-directory))
+         "* %^{Title}\n%?\n"
          :empty-lines 1
          :prepend t)
-        ("c" "Clipboard" entry (file+datetree "~/GitRepos/philosophers-stone/personal/flow/inbox.org")
-         "* %^{Title}\n#+begin_quote\n%x\n#+end_quote\n %?"
+        ("p" "Protocol" entry (file+datetree ,(expand-file-name "personal/flow/inbox.org" org-directory))
+         "* %^{Title}\nSource: %u, %a\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n%?\n"
+         :empty-lines 1
+         :prepend t)
+        ("L" "Procotol Link" entry (file+datetree ,(expand-file-name "personal/flow/inbox.org" org-directory))
+         "* %? | [[%:link][%:description]] \nCaptured On: %U\n"
          :empty-lines 1
          :prepend t)))
-(with-eval-after-load 'org
-  (setq org-match-substring-regexp
-        (concat
-         ;; 限制上标和下标的匹配范围，org 中对其的介绍见：(org) Subscripts and superscripts
-         "\\([0-9a-zA-Zα-γΑ-Ω]\\)\\([_^]\\)\\("
-         "\\(?:" (org-create-multibrace-regexp "{" "}" org-match-sexp-depth) "\\)"
-         "\\|"
-         "\\(?:" (org-create-multibrace-regexp "(" ")" org-match-sexp-depth) "\\)"
-         "\\|"
-         "\\(?:\\*\\|[+-]?[[:alnum:].,\\]*[[:alnum:]]\\)\\)")))
+;;(expand-file-name "personal/flow/inbox.org" org-directory)
 ;; TODO ui
 (setq org-ellipsis " ≡ ")
 ;; `deft'
@@ -129,6 +124,10 @@
         :localleader
         :nv "=" #'yapfify-buffer))
 
+(setq conda-anaconda-home "/home/mooziisp/.conda")
+
 ;; FIXME refactor: eaf, in the future
 ;; (def-package! eaf
 ;;   :init (require 'eaf))
+
+(setq ccls-executable "/bin/ccls")

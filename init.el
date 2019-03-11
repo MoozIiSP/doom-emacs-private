@@ -1,9 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
-(setq package-archives
-      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-        ("org-cn"   . "http://elpa.emacs-china.org/org/")
-        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+;; (setq package-archives
+;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+;;         ("org-cn"   . "http://elpa.emacs-china.org/org/")
+;;         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 
 (doom! :feature
        ;;debugger        ; FIXME stepping through code, to help you add bugs
@@ -11,18 +11,13 @@
        ;;(evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files `yasnippet'
        (lookup           ; helps you navigate your code and documentation
-       ;;+devdocs        ; ...on devdocs.io online `deprecated'
         +docsets)        ; ...or in Dash docsets locally
        snippets          ; my elves. They type so I don't have to `time-trade'
-       spellcheck        ; tasing you for misspelling mispelling `flyspell-correct'
-       (syntax-checker   ; tasing you for every semicolon you forget `flycheck'
-        +childframe)     ; use childframes for error popups (Emacs 26+ only)
        workspaces        ; tab emulation, persistence & separate workspaces `persp-mode'
 
        :completion
        (company          ; the ultimate code completion backend
         +childframe      ; use childframes for completion popups (Emacs 26+ only)
-        +tng             ; TESTING
         +auto)           ; as-you-type code completion
        (helm             ; the *other* search engine for love and life
         +childframe      ; FIXME
@@ -35,19 +30,19 @@
        deft              ; TESTING notational velocity for Emacs
        doom              ; what makes DOOM look the way it does `doom-themes|solaire-mode'
        doom-dashboard    ; a nifty splash screen for Emacs `kosdkoadkwo'
-       doom-modeline     ; a snazzy Atom-inspired mode-line `anzu|shrink-path'
+       ;;doom-modeline     ; a snazzy Atom-inspired mode-line `anzu|shrink-path' `discard'
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;evil-goggles      ; display visual hints when editing in evil
        fci               ; TESTING a `fill-column' indicator `fill-column-indicator'
        hl-todo           ; highlight TODO/FIXME/NOTE tags
-       ;;modeline          ; snazzy, Atom-inspired modeline, plus API
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
        treemacs          ; TESTING a project drawer, like neotree but cooler
        (popup            ; TESTING tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       pretty-code       ; replace bits of code with pretty symbols
+       ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe `git-gutter-fringe'
@@ -55,6 +50,7 @@
        window-select     ; visually switch windows `ace-window'
 
        :editor
+       fold              ; (nigh) universal code folding
        (format +onsave)  ; TESTING
        lispy             ; TESTING
        multiple-cursors  ; TESTING editing in many places at once
@@ -68,7 +64,6 @@
        ;;ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
        ;;eshell            ; a consistent, cross-platform shell (WIP)
-       hideshow          ; TESTING basic code-folding support
        imenu             ; an imenu sidebar and searchable code index `imenu-anywhere|imenu-list'
        term              ; terminals in Emacs `multi-term'
        vc                ; TESTING version-control and Emacs, sitting in a tree
@@ -78,6 +73,10 @@
        ;;docker          ;
        editorconfig      ; TESTING let someone else argue about tabs vs spaces `editorconfig'
        ein               ; tame Jupyter notebooks with emacs
+       flycheck          ; tasing you for every semicolon you forget
+       ;;flyspell          ; tasing you for misspelling mispelling
+       ;;gist              ; interacting with github gists
+       lsp               ; IDE-like experience
        make              ; run make tasks from Emacs `makefile-executor'
        magit             ; a git procelain for Emacs
        ;;password-store    ; password manager for nerds
@@ -88,9 +87,10 @@
        ;;tmux              ; an API for interacting with tmux
        upload            ; TESTING map local to remote projects via ssh/ftp `ssh-deploy'
        ;;wakatime          ; FIXME record your code life
+       ;;vterm             ; another terminals in Emacs
 
        :lang
-       ;;lsp             ; TODO IDE-like experience
+       ;;lsp             ; TODO
        ;;assembly          ; assembly for fun or debugging
        (cc               ; C/C++/Obj-C madness
         +irony)           ; TESTING

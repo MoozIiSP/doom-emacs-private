@@ -12,7 +12,7 @@
 ;;(require 'awesome-tab)
 ;;(setq awesome-tab-background-color 'blac)
 
-;;; `:completion' LSP Client Support
+;;; `:completion'
 ;; default configuration already provide `+childframe' to enable this feature.
 ;; (when (featurep! :completion helm)
 ;;   (package! helm-posframe))
@@ -20,17 +20,15 @@
 ;;
 ;; `swiper-helm' is provided by `helm'.
 
-(when (featurep! :lang lsp)
-  (package! company-lsp)
-  (package! lsp-mode)
-  (package! lsp-ui)
-
-;;; `:lang'
-  (when (featurep! :lang python)
+;;; `:lang' LSP Client support
+(when (featurep! :lang python)
     ; NOTE
-    (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))
-    (package! yapfify)
-    (package! py-isort)))
+  (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))
+  (package! yapfify)
+  (package! py-isort))
+
+(when (featurep! :lang cc)
+  (package! emacs-ccls :recipe (:fetcher github :repo "MaskRay/emacs-ccls")))
 
 ;; TODO
 (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))
