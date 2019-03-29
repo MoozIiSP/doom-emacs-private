@@ -27,8 +27,9 @@
   (package! yapfify)
   (package! py-isort))
 
-(when (featurep! :lang cc)
-  (package! emacs-ccls :recipe (:fetcher github :repo "MaskRay/emacs-ccls")))
+;; NOTE already add into doom-emacs
+;; (when (featurep! :lang cc)
+;;   (package! emacs-ccls :recipe (:fetcher github :repo "MaskRay/emacs-ccls")))
 
 ;; TODO
 (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy"))
@@ -42,7 +43,7 @@
   (package! org-brain)
   (package! org-super-agenda)
   (package! org-clock-convenience)
-  (package! ob-ipython)                 ; NOTE between ob-ipython and lpy
+  ;(package! ob-ipython)                 ; already add into doom-emacs
   (package! ob-translate)
   (package! cdlatex))                    ; NOTE combine cdlatex and auctex
 
@@ -61,3 +62,7 @@
 ;;           :files (:defaults "starters")
 ;;           :fetcher gitlab
 ;;           :repo "jgkamat/rmsbolt"))
+
+(package! move-text :recipe (:fetcher github :repo "manateelazycat/move-text" :files ("*")))
+;; (package! lsp-julia :recipe (:fetcher github :repo "non-Jedi/lsp-julia"))
+(package! lsp-racket :recipe (:fetcher github :repo "vishesh/lsp-racket.el"))

@@ -124,10 +124,24 @@
         :localleader
         :nv "=" #'yapfify-buffer))
 
+;; `BUG' Julia
+;; (add-hook 'ess-julia-mode-hook #'lsp-mode)
+;; (add-hook 'julia-mode-hook #'lsp-mode)
+
 (setq conda-anaconda-home "/home/mooziisp/.conda")
 
 ;; FIXME refactor: eaf, in the future
 ;; (def-package! eaf
 ;;   :init (require 'eaf))
 
+;; NOTE configuration of ccls
 (setq ccls-executable "/bin/ccls")
+
+(def-package! move-text
+  :after python
+  :config
+  (map! :map python-mode-map
+        "M-p" 'move-text-up
+        "M-n" 'move-text-down))
+
+(add-hook 'racket-mode-hook #'lsp-racket-enable)

@@ -74,7 +74,7 @@
        editorconfig      ; TESTING let someone else argue about tabs vs spaces `editorconfig'
        ein               ; tame Jupyter notebooks with emacs
        flycheck          ; tasing you for every semicolon you forget
-       ;;flyspell          ; tasing you for misspelling mispelling
+       flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        lsp               ; IDE-like experience
        make              ; run make tasks from Emacs `makefile-executor'
@@ -90,16 +90,15 @@
        ;;vterm             ; another terminals in Emacs
 
        :lang
-       ;;lsp             ; TODO
-       ;;assembly          ; assembly for fun or debugging
+       assembly          ; assembly for fun or debugging
        (cc               ; C/C++/Obj-C madness
-        +irony)           ; TESTING
+        +lsp)           ; TESTING
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;clojure           ; java with a lisp
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; TESTING config/data formats `graphql|json|toml|vimrc|yaml|csv|dhall'
        emacs-lisp        ; drown in parentheses
-       ess               ; emacs speaks statistics
+       ;ess               ; emacs speaks statistics
        ;go                ; the hipster dialect
        ;(haskell +intero) ; a language that's lazier than I am
        ;hy                ; readability of scheme w/ speed of python
@@ -112,22 +111,25 @@
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
         +export          ; Exporting org to whatever you want
-        +present)        ; Emacs for presentations
+        +present         ; Emacs for presentations
+        +ipython)
        ;;perl              ; write code no one else can comprehend
        ;;plantuml          ; diagrams for confusing people more
        (python           ; beautiful is better than ugly
+        +lsp             ; lsp support
         +conda)          ; scientific package management
        qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
        ;rest              ; Emacs as a REST client
        ;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       (sh +fish)        ; TESTING she sells (ba|z)sh shells on the C xor
+       (sh +fish +lsp)    ; TESTING she sells (ba|z)sh shells on the C xor
        ;web               ; the tubes
 
        ;; Applications are complex and opinionated modules that transform Emacs
        ;; toward a specific purpose. They may have additional dependencies and
        ;; should be loaded late.
        :app
+       calendar
        ;(email +gmail)    ; emacs as an email client
        ;irc               ; how neckbeards socialize
        ;(rss +org)        ; emacs as an RSS reader
