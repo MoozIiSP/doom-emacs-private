@@ -33,7 +33,6 @@
        ;;doom-modeline     ; a snazzy Atom-inspired mode-line `anzu|shrink-path' `discard'
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;evil-goggles      ; display visual hints when editing in evil
-       fci               ; TESTING a `fill-column' indicator `fill-column-indicator'
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
@@ -137,6 +136,7 @@
        regex             ; TESTING throw a exception
        (write            ; TESTING emacs as a word processor (latex + org + markdown)
         +wordnut         ; wordnet (wn) search
+        +org-pretty-mode
         +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :collab

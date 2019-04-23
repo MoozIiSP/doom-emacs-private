@@ -54,6 +54,7 @@
 ;;(when (featurep! :completion ivy)
 ;;  (package! ivy-bibtex))
 ;;(package! org-ref :recipe (:fetcher github :repo "fuxialexander/org-ref" :files ("*")))
+(package! org-ref)
 
 ;;(package! eaf :recipe (:fetcher github :repo "manateelazycat/emacs-application-framework" :files ("*")))
 ;;(package! processing-mode :recipe (:fetcher github :repo "KevOrr/processing2-emacs" :files ("*")))
@@ -66,3 +67,11 @@
 (package! move-text :recipe (:fetcher github :repo "manateelazycat/move-text" :files ("*")))
 ;; (package! lsp-julia :recipe (:fetcher github :repo "non-Jedi/lsp-julia"))
 (package! lsp-racket :recipe (:fetcher github :repo "vishesh/lsp-racket.el"))
+
+(package! writeroom-mode)
+(package! darkroom)
+(package! olivetti)
+
+;; `leetcode' need furl package
+(package! leetcode :recipe (:fetcher github :repo "twoyao/laes"))
+;;(package! furl)
