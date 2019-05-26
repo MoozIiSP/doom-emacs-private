@@ -88,12 +88,13 @@
 (setq org-noter-notes-search-path '("~/GitRepos/philosophers-stone/draft"))
 
 ;; `Latex-Extension'
-(add-to-list 'org-latex-classes '("ctexart" "\\documentclass[a4paper]{ctexart}"
-                                  ("\\section{%s}" . "\\section*{%s}")
-                                  ("\\subsection{%s}" . "\\subsection*{%s}")
-                                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;; (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[a4paper]{ctexart}"
+;;                                   ;; ("\\section{%s}" . "\\section*{%s}")
+;;                                   ;; ("\\subsection{%s}" . "\\subsection*{%s}")
+;;                                   ;; ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;;                                   ;; ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;;                                   ;; ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+;;                                   ))
 
 ;; change company buffer width of sidebar
 ;;(setq company-slid)
