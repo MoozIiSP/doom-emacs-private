@@ -167,7 +167,9 @@
 ;;   :init (require 'eaf))
 
 (def-package! lsp-julia
-  :init (require 'lsp-julia))
+  :init (require 'lsp-julia)
+  :config
+  (add-hook 'julia-mode-hook #'lsp-mode))
 
 ;; NOTE configuration of ccls
 (setq ccls-executable "/bin/ccls")

@@ -65,7 +65,7 @@
        ;;eshell
        ;;term
        ;;vterm
-       
+
        :tools
        ;;ansible         ;
        ;;debugger
@@ -78,7 +78,7 @@
        flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup
-	+docsets)
+        +docsets)
        lsp               ; IDE-like experience
        make              ; run make tasks from Emacs `makefile-executor'
        magit             ; a git procelain for Emacs
@@ -107,18 +107,18 @@
        ;;elixir
        ;;elm
        emacs-lisp        ; drown in parentheses
-       ;ess               ; emacs speaks statistics
-       ;go                ; the hipster dialect
-       ;(haskell +intero) ; a language that's lazier than I am
-       ;hy                ; readability of scheme w/ speed of python
+       ;;ess               ; emacs speaks statistics
+       ;;go                ; the hipster dialect
+       ;;(haskell +intero) ; a language that's lazier than I am
+       ;;hy                ; readability of scheme w/ speed of python
        ;;idris
        ;;(java +meghanada)
        ;;javascript
-       ;;julia             ; a better, faster MATLAB
+       julia             ; a better, faster MATLAB
        ;;kotlin
        latex ; writing papers in Emacs has never been so fun
        ;;ledger
-       ;lua               ; one-based indices? one-based indices
+       ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim
        ;;nix
@@ -128,9 +128,9 @@
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
         +export          ; Exporting org to whatever you want
-	+habit
+        +habit
         +present         ; Emacs for presentations
-	+protocol
+        +protocol
         +ipython)
        ;;perl              ; write code no one else can comprehend
        ;;php
@@ -141,7 +141,7 @@
         +conda)          ; scientific package management
        qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
-       ;rest              ; Emacs as a REST client
+       ;;rest              ; Emacs as a REST client
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;ruby
        ;;scala
@@ -161,17 +161,17 @@
        ;; should be loaded late.
        :app
        calendar
-       ;irc               ; how neckbeards socialize
-       ;(rss +org)        ; emacs as an RSS reader
-       ;twitter           ; twitter client https://twitter.com/vnought
+       ;;irc               ; how neckbeards socialize
+       ;;(rss +org)        ; emacs as an RSS reader
+       ;;twitter           ; twitter client https://twitter.com/vnought
        regex             ; TESTING throw a exception
        (write            ; TESTING emacs as a word processor (latex + org + markdown)
         +wordnut         ; wordnet (wn) search
         +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :collab
-       ;floobits          ; peer programming for a price
-       ;impatient-mode    ; show off code over HTTP
+       ;;floobits          ; peer programming for a price
+       ;;impatient-mode    ; show off code over HTTP
 
        :config
        ;; For literate config users. This will tangle+compile a config.org
