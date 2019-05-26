@@ -65,8 +65,8 @@
 ;;           :repo "jgkamat/rmsbolt"))
 
 (package! move-text :recipe (:fetcher github :repo "manateelazycat/move-text" :files ("*")))
-;; (package! lsp-julia :recipe (:fetcher github :repo "non-Jedi/lsp-julia"))
-(package! lsp-racket :recipe (:fetcher github :repo "vishesh/lsp-racket.el"))
+(package! lsp-julia :recipe (:fetcher github :repo "non-Jedi/lsp-julia"))
+;;(package! lsp-racket :recipe (:fetcher github :repo "vishesh/lsp-racket.el"))
 
 (package! writeroom-mode)
 (package! darkroom)

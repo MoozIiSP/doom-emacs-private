@@ -5,15 +5,9 @@
 ;;         ("org-cn"   . "http://elpa.emacs-china.org/org/")
 ;;         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 
-(doom! :feature
-       ;;debugger        ; FIXME stepping through code, to help you add bugs
-       eval              ; run code, run (also, repls) `quickrun'
-       ;;(evil +everywhere); come to the dark side, we have cookies
-       file-templates    ; auto-snippets for empty files `yasnippet'
-       (lookup           ; helps you navigate your code and documentation
-        +docsets)        ; ...or in Dash docsets locally
-       snippets          ; my elves. They type so I don't have to `time-trade'
-       workspaces        ; tab emulation, persistence & separate workspaces `persp-mode'
+(doom! :input
+       ;;chinese
+       ;;japanese
 
        :completion
        (company          ; the ultimate code completion backend
@@ -29,114 +23,150 @@
        :ui
        deft              ; TESTING notational velocity for Emacs
        doom              ; what makes DOOM look the way it does `doom-themes|solaire-mode'
-       doom-dashboard    ; a nifty splash screen for Emacs `kosdkoadkwo'
-       ;;doom-modeline     ; a snazzy Atom-inspired mode-line `anzu|shrink-path' `discard'
+       doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;;evil-goggles      ; display visual hints when editing in evil
+       ;;fill-column
        hl-todo           ; highlight TODO/FIXME/NOTE tags
+       ;;indent-guides
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
-       treemacs          ; TESTING a project drawer, like neotree but cooler
+       ophints
        (popup            ; TESTING tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
        ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
+       treemacs          ; TESTING a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe `git-gutter-fringe'
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB `vi-tilde-fringe'
        window-select     ; visually switch windows `ace-window'
+       workspaces
 
        :editor
+       file-templates
        fold              ; (nigh) universal code folding
        (format +onsave)  ; TESTING
        lispy             ; TESTING
        multiple-cursors  ; TESTING editing in many places at once
        parinfer          ; TESTING turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates `rotate-text'
+       snippets
 
        :emacs
        (dired             ; making dired pretty [functional]
         +ranger          ; bringing the goodness of ranger to dired
         +icons)          ; colorful icons for dired-mode
-       ;;ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
-       ;;eshell            ; a consistent, cross-platform shell (WIP)
-       imenu             ; an imenu sidebar and searchable code index `imenu-anywhere|imenu-list'
-       term              ; terminals in Emacs `multi-term'
        vc                ; TESTING version-control and Emacs, sitting in a tree
 
+       :term
+       ;;eshell
+       ;;term
+       ;;vterm
+       
        :tools
        ;;ansible         ;
+       ;;debugger
+       ;;direnv
        ;;docker          ;
        editorconfig      ; TESTING let someone else argue about tabs vs spaces `editorconfig'
-       ein               ; tame Jupyter notebooks with emacs
+       ;;ein               ; tame Jupyter notebooks with emacs
+       eval
        flycheck          ; tasing you for every semicolon you forget
        flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
+       (lookup
+	+docsets)
        lsp               ; IDE-like experience
        make              ; run make tasks from Emacs `makefile-executor'
        magit             ; a git procelain for Emacs
-       ;;password-store    ; password manager for nerds
+       ;;pass             ; password manager for nerds
        (pdf              ; pdf enhancements `pdf-tools'
         +modeline)
        prodigy           ; TESTING FIXME managing external services & code builders `peodigy'
        rgb               ; creating color strings `rainbow-mode|kurecolor'
+       terraform
        ;;tmux              ; an API for interacting with tmux
        upload            ; TESTING map local to remote projects via ssh/ftp `ssh-deploy'
        ;;wakatime          ; FIXME record your code life
-       ;;vterm             ; another terminals in Emacs
 
        :lang
+       ;;agda
        assembly          ; assembly for fun or debugging
        (cc               ; C/C++/Obj-C madness
         +lsp)           ; TESTING
        common-lisp       ; if you've seen one lisp, you've seen them all
+       ;;coq
+       ;;crystal
        ;;clojure           ; java with a lisp
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; TESTING config/data formats `graphql|json|toml|vimrc|yaml|csv|dhall'
+       ;;erlang
+       ;;elixir
+       ;;elm
        emacs-lisp        ; drown in parentheses
        ;ess               ; emacs speaks statistics
        ;go                ; the hipster dialect
        ;(haskell +intero) ; a language that's lazier than I am
        ;hy                ; readability of scheme w/ speed of python
-       julia             ; a better, faster MATLAB
-       latex             ; writing papers in Emacs has never been so fun
+       ;;idris
+       ;;(java +meghanada)
+       ;;javascript
+       ;;julia             ; a better, faster MATLAB
+       ;;kotlin
+       latex ; writing papers in Emacs has never been so fun
+       ;;ledger
        ;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
+       ;;nim
+       ;;nix
+       ;;ocaml
        (org              ; organize your plain life in plain text
         +attach          ; custom attachment system
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
         +export          ; Exporting org to whatever you want
+	+habit
         +present         ; Emacs for presentations
+	+protocol
         +ipython)
        ;;perl              ; write code no one else can comprehend
+       ;;php
        ;;plantuml          ; diagrams for confusing people more
+       ;;purescript
        (python           ; beautiful is better than ugly
         +lsp             ; lsp support
         +conda)          ; scientific package management
        qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
        ;rest              ; Emacs as a REST client
-       ;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;;ruby
+       ;;scala
        (sh +fish +lsp)    ; TESTING she sells (ba|z)sh shells on the C xor
-       ;web               ; the tubes
+       ;;swift
+       ;;terra
+       ;;web               ; the tubes
+       ;;vala
+
+       :email
+       ;;(mu4e +gmail)
+       ;;notmuch
+       ;;(wanderlust +gmail)
 
        ;; Applications are complex and opinionated modules that transform Emacs
        ;; toward a specific purpose. They may have additional dependencies and
        ;; should be loaded late.
        :app
        calendar
-       ;(email +gmail)    ; emacs as an email client
        ;irc               ; how neckbeards socialize
        ;(rss +org)        ; emacs as an RSS reader
        ;twitter           ; twitter client https://twitter.com/vnought
        regex             ; TESTING throw a exception
        (write            ; TESTING emacs as a word processor (latex + org + markdown)
         +wordnut         ; wordnet (wn) search
-        +org-pretty-mode
         +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :collab

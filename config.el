@@ -166,6 +166,9 @@
 ;; (def-package! eaf
 ;;   :init (require 'eaf))
 
+(def-package! lsp-julia
+  :init (require 'lsp-julia))
+
 ;; NOTE configuration of ccls
 (setq ccls-executable "/bin/ccls")
 
