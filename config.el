@@ -1,42 +1,40 @@
 ;;;  -*- lexical-binding: t; -*-
 
-;;; Some bugs:
-;;; 1. cannot complete path by file name in helm.
-;;; 2. cannot type enter to complete function name by company.
-;;; FIXME Unicode bugs
-(set-charset-priority 'unicode-bmp)
-
-;;(setq wakatime-cli-path "/bin/wakatime")
-
 ;;; NOTE Basic Configuration
+;;;
 (setq doom-theme 'doom-one)
-(setq doom-font (font-spec :family "Sarasa Mono SC" :size 18))
-      ;;doom-variable-pitch-font (font-spec :family "Sarasa Mono T SC"))
-      ;;                                     :size 22
-      ;;                                     :width 'extra-condensed
-      ;;                                     :weight 'normal
-      ;;                                     :slant 'normal)
+(setq doom-font (font-spec :family "Sarasa Mono T SC" :size 18)
+      doom-variable-pitch-font (font-spec :family "Sarasa Mono T SC"
+                                          :size 22
+                                          :width 'extra-condensed
+                                          :weight 'normal
+                                          :slant 'normal)
       ;; If you enable `unicode', then Doom will ignore the `doom-unicode-font'
       ;; variable and the `unicode-font' setting.
-      ;;doom-unicode-font (font-spec :family "Noto Sans Mono" :size 18)
-      ;;doom-big-font (font-spec :family "Sarasa Mono T SC" :size 24))
-(setq +doom-modeline-height 26
-      +doom-modeline-buffer-file-name-style 'relative-to-project)
+      doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18)
+      doom-big-font (font-spec :family "Sarasa Mono T SC" :size 24))
 
 ;; `Modeline'
-(setq doom-modeline-buffer-file-name-style 'file-name
-      doom-modeline-icon nil
-      doom-modeline-major-mode-icon nil
-      doom-modeline-major-mode-color-icon t
-      doom-modeline-minor-modes nil
-      doom-modeline-enable-word-count t
-      doom-modeline-checker-simple-format t
-      doom-modeline-vcs-max-length 12
-      doom-modeline-persp-name nil
-      doom-modeline-lsp t
-      doom-modeline-github t
-      doom-modeline-github-interval (* 30 60)
-      doom-modeline-env-version t)
+;; (setq doom-modeline-buffer-file-name-style 'relative-to-project
+;;       doom-modeline-icon (display-graphic-p)
+;;       doom-modeline-major-mode-icon t
+;;       doom-modeline-major-mode-color-icon t
+;;       doom-modeline-buffer-state-icon nil
+;;       doom-modeline-buffer-modification-icon nil
+;;       doom-modeline-minor-modes (featurep 'minions)
+;;       doom-modeline-enable-word-count nil
+;;       doom-modeline-buffer-encoding nil
+;;       doom-modeline-indent-info t
+;;       doom-modeline-checker-simple-format t
+;;       doom-modeline-vcs-max-length 12
+;;       doom-modeline-persp-name nil
+;;       doom-modeline-lsp t
+;;       doom-modeline-github nil
+;;       doom-modeline-github-interval (* 30 60)
+;;       doom-modeline-env-version t
+;;       doom-modeline-bar-width 6)
+
+
 
 ;; `ORG' - Plugins
 ;; Keybindings
@@ -79,6 +77,7 @@
          :empty-lines 1
          :prepend t)))
 ;;(expand-file-name "personal/flow/inbox.org" org-directory)
+(setq org-startup-truncated t)
 ;; TODO ui
 (setq org-ellipsis " ≡ ")
 ;; `deft'
@@ -96,8 +95,28 @@
 ;;                                   ;; ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 ;;                                   ))
 
+;; `org-ref'
+(setq reftex-default-bibliography '("~/bibliography/references.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "~/bibliography/notes.org"
+      org-ref-default-bibliography '("~/bibliography/references.bib")
+      org-ref-pdf-directory "~/bibliography/bibtex-pdfs/")
+
+(setq bibtex-completion-bibliography "~/bibliography/references.bib"
+      bibtex-completion-library-path "~/bibliography/bibtex-pdfs"
+      bibtex-completion-notes-path "~/bibliography/helm-bibtex-notes")
+
+;; open pdf with system pdf viewer (works on mac)
+(setq bibtex-completion-pdf-open-function
+  (lambda (fpath)
+    (start-process "open" "*open*" "open" fpath)))
+
 ;; change company buffer width of sidebar
 ;;(setq company-slid)
+
+
+
 
 ;; `:ui' `hl-todo' Sets keyword and color of its highlighted
 (with-eval-after-load 'hl-todo
@@ -122,7 +141,9 @@
 ;; `Treemacs'
 ;;(global-set-key (kbd "C-x\t") 'treemacs)
 ;; `:completion' `swiper-helm' Searching
-(global-set-key (kbd "C-s") 'swiper-helm)
+;; (global-set-key (kbd "C-s") 'swiper-helm)
+
+
 
 ;;; Extension
 ;; TODO `ein'
@@ -133,6 +154,7 @@
 (remove-hook 'emacs-lisp-mode-hook #'flycheck-mode)
 (remove-hook 'org-mode-hook #'auto-fill-mode)
 
+;; `Python'
 (def-package! lpy
   :hook ((python-mode . lpy-mode))
   :config
@@ -141,40 +163,6 @@
         :i "C-p" #'previous-line
         :i "C-n" #'next-line))
 
-(def-package! py-isort
-  :after python
-  :config
-  (map! :map python-mode-map
-        :localleader
-        :n "s" #'py-isort-buffer
-        :v "s" #'py-isort-region))
-
-(def-package! yapfify
-  :after python
-  :hook (python-mode . yapf-mode)
-  :config
-  (map! :map python-mode-map
-        :localleader
-        :nv "=" #'yapfify-buffer))
-
-;; `BUG' Julia
-;; (add-hook 'ess-julia-mode-hook #'lsp-mode)
-;; (add-hook 'julia-mode-hook #'lsp-mode)
-
-(setq conda-anaconda-home "/home/mooziisp/.conda")
-
-;; FIXME refactor: eaf, in the future
-;; (def-package! eaf
-;;   :init (require 'eaf))
-
-(def-package! lsp-julia
-  :init (require 'lsp-julia)
-  :config
-  (add-hook 'julia-mode-hook #'lsp-mode))
-
-;; NOTE configuration of ccls
-(setq ccls-executable "/bin/ccls")
-
 (def-package! move-text
   :after python
   :config
@@ -182,56 +170,20 @@
         "M-p" 'move-text-up
         "M-n" 'move-text-down))
 
-(add-hook 'racket-mode-hook #'lsp-racket-enable)
+(setq conda-anaconda-home "/home/mooziisp/.conda")
 
+(def-package! lsp-julia
+  :config
+  (add-hook 'julia-mode-hook #'lsp-mode)
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.1"))
+
+(def-package! lsp-racket
+  :hook (racket-mode . lsp-racket))
+
+;; `leetcode'
 ;; leetcode configuration
-(require 'leetcode)
-(setq lc-user-name-email "ttp_0001@163.com"
-      lc-user-password "Ttp123456."
-      lc-perfer-lang "python3")
-
-;; `org-ref'
-(setq reftex-default-bibliography '("~/bibliography/references.bib"))
-
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "~/bibliography/notes.org"
-      org-ref-default-bibliography '("~/bibliography/references.bib")
-      org-ref-pdf-directory "~/bibliography/bibtex-pdfs/")
-
-(setq bibtex-completion-bibliography "~/bibliography/references.bib"
-      bibtex-completion-library-path "~/bibliography/bibtex-pdfs"
-      bibtex-completion-notes-path "~/bibliography/helm-bibtex-notes")
-
-;; open pdf with system pdf viewer (works on mac)
-(setq bibtex-completion-pdf-open-function
-  (lambda (fpath)
-    (start-process "open" "*open*" "open" fpath)))
-
-;; alternative
-;; (setq bibtex-completion-pdf-open-function 'org-open-file)
-
-;; (defun org-ref-extract-arxivId-from-pdf (pdf)
-;;   "Try to extract a doi from a PDF file.
-;; There may be more than one doi in the file. This function returns
-;; all the ones it finds based on two patterns: doi: up to a quote,
-;; bracket, space or end of line. dx.doi.org/up to a quote, bracket,
-;; space or end of line.
-;; If there is a trailing . we chomp it off. Returns a list of doi
-;; strings, or nil.
-;; "
-;;   (with-temp-buffer
-;;     (insert (shell-command-to-string (format "%s %s -")
-;;                pdftotext-executable
-;;                (shell-quote-argument (dnd-unescape-uri pdf))))
-;;     (goto-char (point-min))
-;;     (let ((matches '()))
-;;       (while (re-search-forward org-ref-pdf-doi-regex nil t))))
-;;   ;; I don't know how to avoid a trailing . on some dois with the
-;;   ;; expression above, so if it is there, I chomp it off here.
-;;   (let ((doi (match-string 1)))
-;;     (when (s-ends-with? "." doi)
-;;       (setq doi (substring doi 0 (- (length doi) 1))))
-;;     (cl-pushnew doi matches :test #'equal
-;;       matches)))
-
-;; (point-max)
+(def-package! leetcode
+  :config
+  (setq lc-user-name-email "ttp_0001@163.com"
+        lc-user-password "Ttp123456."
+        lc-perfer-lang "python3"))

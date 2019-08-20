@@ -13,25 +13,27 @@
        (company          ; the ultimate code completion backend
         +childframe      ; use childframes for completion popups (Emacs 26+ only)
         +auto)           ; as-you-type code completion
-       (helm             ; the *other* search engine for love and life
-        +childframe      ; FIXME
-        +fuzzy)          ; enable fuzzy search backend for helm
+       ;;(helm             ; the *other* search engine for love and life
+       ;; +childframe      ; FIXME
+       ;; +fuzzy)          ; enable fuzzy search backend for helm
        ;;ido             ; the other *other* search engine...
-       ;;(ivy            ; a search engine for love and life
-       ;; +fuzzy)        ; enable fuzzy search backend for ivy
+       (ivy            ; a search engine for love and life
+        +fuzzy        ; enable fuzzy search backend for ivy
+        +childframe
+        +icons)
 
        :ui
-       deft              ; TESTING notational velocity for Emacs
+       deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does `doom-themes|solaire-mode'
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;fill-column
        hl-todo           ; highlight TODO/FIXME/NOTE tags
-       ;;indent-guides
+       indent-guides
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
-       ophints
+       ophints           ; highlight the region an operation acts on
        (popup            ; TESTING tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
@@ -47,8 +49,8 @@
        :editor
        file-templates
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; TESTING
-       lispy             ; TESTING
+       (format +onsave)  ; TESTING automated prettiness
+       lispy             ; TESTING vim for lisp, for people who dont like vim
        multiple-cursors  ; TESTING editing in many places at once
        parinfer          ; TESTING turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates `rotate-text'
@@ -185,3 +187,17 @@
        ;; old: (default +bindings +snippets +evil-commands))
        ;; last edit: (default +bindings +snippets)
        (default +bindings +smartparens))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("868abc288f3afe212a70d24de2e156180e97c67ca2e86ba0f2bf9a18c9672f07" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
