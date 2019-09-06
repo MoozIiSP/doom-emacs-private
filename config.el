@@ -5,14 +5,14 @@
 (setq doom-theme 'doom-one)
 (setq doom-font (font-spec :family "Sarasa Mono T SC" :size 18)
       doom-variable-pitch-font (font-spec :family "Sarasa Mono T SC"
-                                          :size 22
+                                          :size 20
                                           :width 'extra-condensed
                                           :weight 'normal
                                           :slant 'normal)
       ;; If you enable `unicode', then Doom will ignore the `doom-unicode-font'
       ;; variable and the `unicode-font' setting.
-      doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18)
-      doom-big-font (font-spec :family "Sarasa Mono T SC" :size 24))
+      ;;doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18)
+      doom-big-font (font-spec :family "Sarasa Mono T SC" :size 20))
 
 ;; `Modeline'
 ;; (setq doom-modeline-buffer-file-name-style 'relative-to-project
@@ -37,9 +37,9 @@
 
 
 ;; `ORG' - Plugins
-;; Keybindings
-(global-set-key "\C-ct" 'google-translate-at-point)
-(global-set-key "\C-cT" 'google-translate-query-translate)
+;; TODO Keybindings
+;;(global-set-key "\C-ct" 'google-translate-at-point)
+;;(global-set-key "\C-cT" 'google-translate-query-translate)
 ;; new version already set those key.
 ;; (global-set-key "\C-ca" 'org-agenda)
 ;; (global-set-key "\C-cc" 'org-capture)
@@ -47,7 +47,7 @@
 (setq google-translate-base-url "http://translate.google.cn/translate_a/single"
       google-translate-listen-url "http://translate.google.cn/translate_tts"
       google-translate--tkk-url "http://translate.google.cn/")
-
+;; Fix org emphasis
 (setq org-emphasis-regexp-components
       ;; markup 记号前后允许中文
       (list (concat " \t('\"{"            "[:nonascii:]")
@@ -57,26 +57,26 @@
             1))
 ;; bullets is too small
 (setq org-bullets-bullet-list '("⚀" "⚁" "⚂" "⚃" "⚄" "⚅"))
-;; TODO `org-capture' capture note and insipron.
+;; TODO `org-capture' capture note and inspiron.
 (server-start)
 (require 'org-protocol)
 (setq org-directory "~/GitRepos/philosophers-stone")
-(setq org-agenda-files '("~/GitRepos/philosophers-stone/personal/flow"))
+(setq org-agenda-files '("~/GitRepos/philosophers-stone/"))
 (setq org-capture-templates
       `(;; 存放在相应headline节点下，%i的作用是？%a是一个ref链接
-        ("n" "Note" entry (file+datetree ,(expand-file-name "personal/flow/inbox.org" org-directory))
+        ("n" "Note" entry (file+datetree ,(expand-file-name "inbox.org" org-directory))
          "* %^{Title}\n%?\n"
          :empty-lines 1
          :prepend t)
-        ("p" "Protocol" entry (file+datetree ,(expand-file-name "personal/flow/inbox.org" org-directory))
+        ("p" "Protocol" entry (file+datetree ,(expand-file-name "inbox.org" org-directory))
          "* %^{Title}\nSource: %u, %a\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n%?\n"
          :empty-lines 1
          :prepend t)
-        ("L" "Procotol Link" entry (file+datetree ,(expand-file-name "personal/flow/inbox.org" org-directory))
+        ("L" "Procotol Link" entry (file+datetree ,(expand-file-name "inbox.org" org-directory))
          "* %? | [[%:link][%:description]] \nCaptured On: %U\n"
          :empty-lines 1
          :prepend t)))
-;;(expand-file-name "personal/flow/inbox.org" org-directory)
+
 (setq org-startup-truncated t)
 ;; TODO ui
 (setq org-ellipsis " ≡ ")
@@ -95,29 +95,6 @@
 ;;                                   ;; ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
 ;;                                   ))
 
-;; `org-ref'
-(setq reftex-default-bibliography '("~/bibliography/references.bib"))
-
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "~/bibliography/notes.org"
-      org-ref-default-bibliography '("~/bibliography/references.bib")
-      org-ref-pdf-directory "~/bibliography/bibtex-pdfs/")
-
-(setq bibtex-completion-bibliography "~/bibliography/references.bib"
-      bibtex-completion-library-path "~/bibliography/bibtex-pdfs"
-      bibtex-completion-notes-path "~/bibliography/helm-bibtex-notes")
-
-;; open pdf with system pdf viewer (works on mac)
-(setq bibtex-completion-pdf-open-function
-  (lambda (fpath)
-    (start-process "open" "*open*" "open" fpath)))
-
-;; change company buffer width of sidebar
-;;(setq company-slid)
-
-
-
-
 ;; `:ui' `hl-todo' Sets keyword and color of its highlighted
 (with-eval-after-load 'hl-todo
   (add-to-list 'hl-todo-keyword-faces '("TESTING" . "#1874CD")))
@@ -130,19 +107,18 @@
   :src_block     ""
   :src_block_end "«")
 ;; `posframe' of built-in
-(with-eval-after-load 'helm
-  (setq +helm-posframe-text-scale nil
-        ;; maybe, built-in will discard in the future.
-        +helm-posframe-parameters '((internal-border-width . 8)
-                                    (width . 0.5)
-                                    (height . 0.35)
-                                    (min-width . 80)
-                                    (min-height . 16))))
+;; (with-eval-after-load 'helm
+;;   (setq +helm-posframe-text-scale nil
+;;         ;; maybe, built-in will discard in the future.
+;;         +helm-posframe-parameters '((internal-border-width . 8)
+;;                                     (width . 0.5)
+;;                                     (height . 0.35)
+;;                                     (min-width . 80)
+;;                                     (min-height . 16))))
 ;; `Treemacs'
 ;;(global-set-key (kbd "C-x\t") 'treemacs)
 ;; `:completion' `swiper-helm' Searching
 ;; (global-set-key (kbd "C-s") 'swiper-helm)
-
 
 
 ;;; Extension
@@ -180,10 +156,7 @@
 (def-package! lsp-racket
   :hook (racket-mode . lsp-racket))
 
-;; `leetcode'
-;; leetcode configuration
 (def-package! leetcode
   :config
-  (setq lc-user-name-email "ttp_0001@163.com"
-        lc-user-password "Ttp123456."
-        lc-perfer-lang "python3"))
+  (setq leetcode-prefer-language "python3"
+        leetcode-prefer-sql "sqlite"))

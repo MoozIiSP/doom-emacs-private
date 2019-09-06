@@ -29,6 +29,7 @@
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;fill-column
        hl-todo           ; highlight TODO/FIXME/NOTE tags
+       ;;hydra
        indent-guides
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
@@ -38,7 +39,7 @@
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
        ;;pretty-code       ; replace bits of code with pretty symbols
-       ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
+       tabs              ; an tab bar for Emacs
        treemacs          ; TESTING a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe `git-gutter-fringe'
@@ -54,7 +55,8 @@
        multiple-cursors  ; TESTING editing in many places at once
        parinfer          ; TESTING turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates `rotate-text'
-       snippets
+       snippets          ; my elves. They type so I don't have to
+       word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        (dired             ; making dired pretty [functional]
@@ -64,9 +66,10 @@
        vc                ; TESTING version-control and Emacs, sitting in a tree
 
        :term
-       ;;eshell
-       ;;term
-       ;;vterm
+       ;;eshell            ; a consistent, cross-platform shell (WIP)
+       ;;shell             ; a terminal REPL for Emacs
+       ;;term              ; terminals in Emacs
+       ;;vterm             ; another terminals in Emacs
 
        :tools
        ;;ansible         ;
@@ -82,7 +85,7 @@
        (lookup
         +docsets)
        lsp               ; IDE-like experience
-       make              ; run make tasks from Emacs `makefile-executor'
+       ;make              ; run make tasks from Emacs `makefile-executor'
        magit             ; a git procelain for Emacs
        ;;pass             ; password manager for nerds
        (pdf              ; pdf enhancements `pdf-tools'
@@ -92,17 +95,17 @@
        terraform
        ;;tmux              ; an API for interacting with tmux
        upload            ; TESTING map local to remote projects via ssh/ftp `ssh-deploy'
-       ;;wakatime          ; FIXME record your code life
+       wakatime          ; record your code life
 
        :lang
        ;;agda
        assembly          ; assembly for fun or debugging
        (cc               ; C/C++/Obj-C madness
         +lsp)           ; TESTING
+       ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq
        ;;crystal
-       ;;clojure           ; java with a lisp
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; TESTING config/data formats `graphql|json|toml|vimrc|yaml|csv|dhall'
        ;;erlang
@@ -110,6 +113,7 @@
        ;;elm
        emacs-lisp        ; drown in parentheses
        ;;ess               ; emacs speaks statistics
+       ;;fsharp           ; ML stands for Microsoft's Language
        ;;go                ; the hipster dialect
        ;;(haskell +intero) ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
@@ -118,7 +122,7 @@
        ;;javascript
        julia             ; a better, faster MATLAB
        ;;kotlin
-       latex ; writing papers in Emacs has never been so fun
+       latex             ; writing papers in Emacs has never been so fun
        ;;ledger
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
@@ -126,14 +130,11 @@
        ;;nix
        ;;ocaml
        (org              ; organize your plain life in plain text
-        +attach          ; custom attachment system
-        +babel           ; running code in org
-        +capture         ; org-capture in and outside of Emacs
-        +export          ; Exporting org to whatever you want
-        +habit
-        +present         ; Emacs for presentations
-        +protocol
-        +ipython)
+        +dragndrop       ; file drag & drop support
+        +gnuplot
+        +ipython         ; ipython support for babel
+        +pandoc          ; pandoc integration into org's exporter
+        +present)        ; using Emacs for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php
        ;;plantuml          ; diagrams for confusing people more
@@ -147,11 +148,12 @@
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;ruby
        ;;scala
+       scheme            ; a fully conniving family of lisps
        (sh +fish +lsp)    ; TESTING she sells (ba|z)sh shells on the C xor
-       ;;swift
-       ;;terra
+       ;;swift             ; who asked for emoji variables?
+       ;;terra             ; Earth and Moon in alignment for performance.
        ;;web               ; the tubes
-       ;;vala
+       ;;vala              ; GObjective-C
 
        :email
        ;;(mu4e +gmail)
@@ -166,7 +168,6 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-       regex             ; TESTING throw a exception
        (write            ; TESTING emacs as a word processor (latex + org + markdown)
         +wordnut         ; wordnet (wn) search
         +langtool)       ; a proofreader (grammar/style check) for Emacs
@@ -192,9 +193,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("868abc288f3afe212a70d24de2e156180e97c67ca2e86ba0f2bf9a18c9672f07" default))))
+ '(wakatime-api-key "84edde0b-dd0b-4f6f-9b1c-7a1f591b70d8"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
