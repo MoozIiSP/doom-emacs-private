@@ -3,32 +3,32 @@
 ;;; NOTE Basic Configuration
 ;;;
 (setq doom-theme 'doom-one)
-(setq doom-font (font-spec :family "Sarasa Mono T SC" :size 18)
-      doom-variable-pitch-font (font-spec :family "Sarasa Mono T SC"
-                                          :size 20
-                                          :width 'extra-condensed
-                                          :weight 'normal
-                                          :slant 'normal)
+(setq doom-font (font-spec :family "Sarasa Mono T SC" :size 17))
+      ;; doom-variable-pitch-font (font-spec :family "Sarasa Mono T SC"
+      ;;                                     :size 20
+      ;;                                     :width 'extra-condensed
+      ;;                                     :weight 'normal
+      ;;                                     :slant 'normal)
       ;; If you enable `unicode', then Doom will ignore the `doom-unicode-font'
       ;; variable and the `unicode-font' setting.
-      ;;doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18)
-      doom-big-font (font-spec :family "Sarasa Mono T SC" :size 20))
+      ;;doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18))
+      ;;doom-big-font (font-spec :family "Sarasa Mono T SC" :size 20))
 
 ;; `Modeline'
-;; (setq doom-modeline-buffer-file-name-style 'relative-to-project
+(setq doom-modeline-buffer-file-name-style 'relative-to-project
 ;;       doom-modeline-icon (display-graphic-p)
-;;       doom-modeline-major-mode-icon t
-;;       doom-modeline-major-mode-color-icon t
-;;       doom-modeline-buffer-state-icon nil
-;;       doom-modeline-buffer-modification-icon nil
+;;       doom-modeline-major-mode-icon t)
+       doom-modeline-major-mode-color-icon t
+       doom-modeline-buffer-state-icon t
+       doom-modeline-buffer-modification-icon t
 ;;       doom-modeline-minor-modes (featurep 'minions)
 ;;       doom-modeline-enable-word-count nil
 ;;       doom-modeline-buffer-encoding nil
 ;;       doom-modeline-indent-info t
-;;       doom-modeline-checker-simple-format t
+       doom-modeline-checker-simple-format t
 ;;       doom-modeline-vcs-max-length 12
 ;;       doom-modeline-persp-name nil
-;;       doom-modeline-lsp t
+       doom-modeline-lsp t)
 ;;       doom-modeline-github nil
 ;;       doom-modeline-github-interval (* 30 60)
 ;;       doom-modeline-env-version t
@@ -64,15 +64,15 @@
 (setq org-agenda-files '("~/GitRepos/philosophers-stone/"))
 (setq org-capture-templates
       `(;; 存放在相应headline节点下，%i的作用是？%a是一个ref链接
-        ("n" "Note" entry (file+datetree ,(expand-file-name "inbox.org" org-directory))
+        ("n" "Note" entry (file+olp+datetree ,(expand-file-name "inbox.org" org-directory))
          "* %^{Title}\n%?\n"
          :empty-lines 1
          :prepend t)
-        ("p" "Protocol" entry (file+datetree ,(expand-file-name "inbox.org" org-directory))
+        ("p" "Protocol" entry (file+olp+datetree ,(expand-file-name "inbox.org" org-directory))
          "* %^{Title}\nSource: %u, %a\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n%?\n"
          :empty-lines 1
          :prepend t)
-        ("L" "Procotol Link" entry (file+datetree ,(expand-file-name "inbox.org" org-directory))
+        ("L" "Procotol Link" entry (file+olp+datetree ,(expand-file-name "inbox.org" org-directory))
          "* %? | [[%:link][%:description]] \nCaptured On: %U\n"
          :empty-lines 1
          :prepend t)))
