@@ -12,13 +12,14 @@
        :completion
        (company          ; the ultimate code completion backend
         +childframe      ; use childframes for completion popups (Emacs 26+ only)
-        +auto)           ; as-you-type code completion
-       ;;(helm             ; the *other* search engine for love and life
-       ;; +childframe      ; FIXME
-       ;; +fuzzy)          ; enable fuzzy search backend for helm
+        +tng)            ; as-you-type code completion
+       ;;(helm           ; the *other* search engine for love and life
+       ;; +childframe    ; FIXME
+       ;; +fuzzy)        ; enable fuzzy search backend for helm
        ;;ido             ; the other *other* search engine...
-       (ivy            ; a search engine for love and life
-        +fuzzy        ; enable fuzzy search backend for ivy
+       (ivy              ; a search engine for love and life
+        +fuzzy           ; enable fuzzy search backend for ivy
+	    +prescient
         +childframe
         +icons)
 
@@ -30,7 +31,7 @@
        ;;fill-column
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        ;;hydra
-       indent-guides
+       ;;indent-guides
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -39,18 +40,18 @@
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
        ;;pretty-code       ; replace bits of code with pretty symbols
-       tabs              ; an tab bar for Emacs
+       ;;tabs              ; an tab bar for Emacs
        treemacs          ; TESTING a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe `git-gutter-fringe'
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB `vi-tilde-fringe'
        window-select     ; visually switch windows `ace-window'
-       workspaces
+       workspaces        ; tab emulation, persistence & separate workspaces
 
        :editor
        file-templates
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; TESTING automated prettiness
+       format            ; TESTING automated prettiness
        lispy             ; TESTING vim for lisp, for people who dont like vim
        multiple-cursors  ; TESTING editing in many places at once
        parinfer          ; TESTING turn lisp into python, sort of
@@ -63,39 +64,38 @@
         +ranger          ; bringing the goodness of ranger to dired
         +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
+       (ibuffer           ; interactive buffer management
+        +icons)          ; filetype icons for buffers
        vc                ; TESTING version-control and Emacs, sitting in a tree
 
        :term
-       ;;eshell            ; a consistent, cross-platform shell (WIP)
+       eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        ;;term              ; terminals in Emacs
-       ;;vterm             ; another terminals in Emacs
+       vterm             ; another terminals in Emacs
 
        :tools
        ;;ansible         ;
        ;;debugger
-       ;;direnv
+       direnv
        ;;docker          ;
        editorconfig      ; TESTING let someone else argue about tabs vs spaces `editorconfig'
        ;;ein               ; tame Jupyter notebooks with emacs
-       eval
+       (eval +overlay)     ; run code, run (also, repls)
        flycheck          ; tasing you for every semicolon you forget
        flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
-       (lookup
-        +docsets)
+       lookup
        lsp               ; IDE-like experience
        ;make              ; run make tasks from Emacs `makefile-executor'
        magit             ; a git procelain for Emacs
        ;;pass             ; password manager for nerds
-       (pdf              ; pdf enhancements `pdf-tools'
-        +modeline)
+       pdf              ; pdf enhancements `pdf-tools'
        prodigy           ; TESTING FIXME managing external services & code builders `peodigy'
        rgb               ; creating color strings `rainbow-mode|kurecolor'
        terraform
        ;;tmux              ; an API for interacting with tmux
        upload            ; TESTING map local to remote projects via ssh/ftp `ssh-deploy'
-       wakatime          ; record your code life
 
        :lang
        ;;agda
@@ -116,7 +116,7 @@
        ;;fsharp           ; ML stands for Microsoft's Language
        ;;go                ; the hipster dialect
        ;;(haskell +intero) ; a language that's lazier than I am
-       ;;hy                ; readability of scheme w/ speed of python
+       hy                ; readability of scheme w/ speed of python
        ;;idris
        ;;(java +meghanada)
        ;;javascript
@@ -131,9 +131,11 @@
        ;;ocaml
        (org              ; organize your plain life in plain text
         +dragndrop       ; file drag & drop support
+        +hugo            ; use Emacs for hugo blogging
         +gnuplot
         +ipython         ; ipython support for babel
         +pandoc          ; pandoc integration into org's exporter
+        +pomodoro        ; be fruitful with the tomato technique
         +present)        ; using Emacs for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php
@@ -141,15 +143,16 @@
        ;;purescript
        (python           ; beautiful is better than ugly
         +lsp             ; lsp support
-        +conda)          ; scientific package management
+        +conda           ; scientific package management
+        +cython)         ; Cython files support
        qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;ruby
        ;;scala
-       scheme            ; a fully conniving family of lisps
-       (sh +fish +lsp)    ; TESTING she sells (ba|z)sh shells on the C xor
+       ;;scheme            ; a fully conniving family of lisps
+       (sh +fish)    ; TESTING she sells (ba|z)sh shells on the C xor
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;web               ; the tubes
@@ -172,13 +175,10 @@
         +wordnut         ; wordnet (wn) search
         +langtool)       ; a proofreader (grammar/style check) for Emacs
 
-       :collab
-       ;;floobits          ; peer programming for a price
-       ;;impatient-mode    ; show off code over HTTP
 
        :config
        ;; For literate config users. This will tangle+compile a config.org
-       ;; literate config in your `doom-private-dir' whenever it changes.
+       ;; literate config in your `doom-private-dir' whenever it hanges.
        ;;literate
 
        ;; The default module set reasonable defaults for Emacs. It also provides
@@ -193,7 +193,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(wakatime-api-key "84edde0b-dd0b-4f6f-9b1c-7a1f591b70d8"))
+ '(wakatime-api-key "84edde0b-dd0b-4f6f-9b1c-7a1f591b70d8")
+ '(wakatime-cli-path "/usr/bin/wakatime")
+ '(wakatime-python-bin nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

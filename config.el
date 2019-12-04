@@ -3,12 +3,12 @@
 ;;; NOTE Basic Configuration
 ;;;
 (setq doom-theme 'doom-one)
-(setq doom-font (font-spec :family "Sarasa Mono T SC" :size 17))
-      ;; doom-variable-pitch-font (font-spec :family "Sarasa Mono T SC"
-      ;;                                     :size 20
-      ;;                                     :width 'extra-condensed
-      ;;                                     :weight 'normal
-      ;;                                     :slant 'normal)
+(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 15)
+      doom-variable-pitch-font (font-spec :family "等距更纱黑体 SC"
+                                          :size 11
+                                          :width 'extra-condensed
+                                          :weight 'normal
+                                          :slant 'normal))
       ;; If you enable `unicode', then Doom will ignore the `doom-unicode-font'
       ;; variable and the `unicode-font' setting.
       ;;doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18))
@@ -131,7 +131,7 @@
 (remove-hook 'org-mode-hook #'auto-fill-mode)
 
 ;; `Python'
-(def-package! lpy
+(use-package! lpy
   :hook ((python-mode . lpy-mode))
   :config
   (require 'le-python)
@@ -139,7 +139,7 @@
         :i "C-p" #'previous-line
         :i "C-n" #'next-line))
 
-(def-package! move-text
+(use-package! move-text
   :after python
   :config
   (map! :map python-mode-map
@@ -147,16 +147,34 @@
         "M-n" 'move-text-down))
 
 (setq conda-anaconda-home "/home/mooziisp/.conda")
+(setq lsp-python-ms-executable "mspyls")
 
-(def-package! lsp-julia
+(use-package! lsp-julia
   :config
   (add-hook 'julia-mode-hook #'lsp-mode)
   (setq lsp-julia-default-environment "~/.julia/environments/v1.1"))
 
-(def-package! lsp-racket
+(use-package! lsp-racket
   :hook (racket-mode . lsp-racket))
 
-(def-package! leetcode
+(use-package! leetcode
   :config
   (setq leetcode-prefer-language "python3"
         leetcode-prefer-sql "sqlite"))
+
+(use-package! eaf
+  :config
+  (disable-command 'eaf-open-qutebrowser)
+  (disable-command 'eaf-open-browser)
+  (disable-command 'eaf-open-camera)
+  (disable-command 'eaf-open-terminal)
+  (disable-command 'eaf-file-sender-qrcode)
+  (disable-command 'eaf-file-receiver-qrcode)
+  (disable-command 'eaf-file-transfer-airshare)
+  (disable-command 'eaf-open-demo))
+
+;; FIXME should not text
+(use-package! wakatime-mode
+  :config
+  (setq wakatime-api-key nil))
+(setq shell-file-name "/bin/bash")

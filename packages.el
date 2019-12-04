@@ -22,17 +22,17 @@
 ;; TODO
 (package! lpy :recipe (:host github :repo "abo-abo/lpy"))
 
-(when (featurep! :lang org)
-  ;;(package! ivy-bibtex)
-  (package! org-noter)
-  (package! org-web-tools)
-  (package! org-brain)
-  (package! org-super-agenda)
-  (package! org-clock-convenience)
-  (package! ob-translate)
-  (package! cdlatex))                    ; NOTE combine cdlatex and auctex
+;; (when (featurep! :lang org)
+;;   ;;(package! ivy-bibtex)
+;;   (package! org-noter)
+;;   (package! org-web-tools)
+;;   (package! org-brain)
+;;   (package! org-super-agenda)
+;;   (package! org-clock-convenience)
+;;   (package! ob-translate)
+;;   (package! cdlatex))                    ; NOTE combine cdlatex and auctex
 
-;;(package! eaf :recipe (:fetcher github :repo "manateelazycat/emacs-application-framework" :files ("*")))
+(package! eaf :recipe (:host github :repo "manateelazycat/emacs-application-framework"))
 ;;(package! processing-mode :recipe (:fetcher github :repo "KevOrr/processing2-emacs" :files ("*")))
 ;;(package! rmsbolt :recipe (:fetcher gitlab :repo "jgkamat/rmsbolt"))
 ;; (quelpa '(rmsbolt
@@ -44,9 +44,10 @@
 (package! lsp-julia :recipe (:host github :repo "non-Jedi/lsp-julia" :files ("*")))
 (package! lsp-racket :recipe (:host github :repo "vishesh/lsp-racket.el" :files ("*")))
 
-(package! writeroom-mode)
-(package! darkroom)
 (package! olivetti)
 
 ;; `leetcode' need furl package
 (package! leetcode :recipe (:host github :repo "kaiwk/leetcode.el"))
+
+;; wakatime
+(package! wakatime-mode :recipe (:host github :repo "wakatime/wakatime-mode" :files ("*")))

@@ -1,0 +1,52 @@
+# -*- mode: snippet -*-
+# contributor: MoozIiSP <yuaolni@gmail.com>
+# name: neural_net_eval
+# key: nne
+# group: pytorch
+# expand-env: ((yas-indent-line 'fixed))
+# --
+def eval(epoch=0):
+    # NOTE Meter Params
+    ${1:acc1 = AverageMeter('Acc@1')
+    losses = AverageMeter('Loss')
+    tiktok = AverageMeter('Tiktok')
+    dataload = AverageMeter('Data')}
+
+    # Switch to train mode
+    net.train(False)
+
+    with torch.no_grad():
+         interval = int(len(train_loader) * 0.3 + 0.5)
+         for it, (inputs, target) in enumerate(train_loader):
+             tik = time.perf_counter()
+             inputs, target = inputs.to(device), target.to(device)
+
+             # zero the optimizer gradient
+             optimizer.zero_grad()
+
+             # forward, compute pred and loss
+             # NOTE One-Task or Multi-Task Loss
+             ${2:output = net(inputs)
+             loss = criterion(output, target)}
+
+             # NOTE measure accuracy and loss
+             ${3:acc_k = accuracy(output, target, topk=(1,))
+             losses.update(loss.item(), inputs.size(0))
+             acc1.update(acc_k[0].item(), inputs.size(0))}
+
+             # backward, compute gradient and do optimizer step
+             loss.backward()
+             optimizer.step()
+
+             tok = time.perf_counter() - tik
+             tiktok.update(tok, 1)
+
+             # Logging
+             ${4:if it % interval == 0:
+                        logger.info(f'V [{it:3d}/{len(val_loader)}]' +
+                                    f' | loss {losses.avg:.2f} = {loss1.item():.2f} + {loss2.item():.2f} | top@1 {top1.avg:.2f}' +
+                                    f' | {tok*interval:.2f}s')
+                    writer.add_scalar('loss/valid', vlosses.avg,
+                                      epoch * len(val_loader) + it)
+                    writer.add_scalar('acc1/valid', top1.avg,
+                                      epoch * len(val_loader) + it)}

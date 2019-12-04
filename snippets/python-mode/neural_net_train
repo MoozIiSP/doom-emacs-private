@@ -1,0 +1,61 @@
+# -*- mode: snippet -*-
+# contributor: MoozIiSP <yuaolni@gmail.com>
+# name: neural_net_train
+# key: nnt
+# group: pytorch
+# expand-env: ((yas-indent-line 'fixed))
+# --
+def train(epoch=0):
+    # NOTE Meter Params
+    ${1:acc1 = AverageMeter('Acc@1')
+    losses = AverageMeter('Loss')
+    tiktok = AverageMeter('Tiktok')
+    dataload = AverageMeter('Data')}
+
+    # Switch to train mode
+    net.train(True)
+
+    # train for one epoch
+    interval = int(len(train_loader) * 0.3 + 0.5)
+    for it, (inputs, target) in enumerate(train_loader):
+        tik = time.perf_counter()
+        inputs, target = inputs.to(device), target.to(device)
+
+        # zero the optimizer gradient
+        optimizer.zero_grad()
+
+        # forward, compute pred and loss
+        # NOTE One-Task or Multi-Task Loss
+        ${2:output = net(inputs)
+        loss = criterion(output, target)}
+
+        # NOTE measure accuracy and loss
+        ${3:acc_k = accuracy(output, target, topk=(1,))
+        losses.update(loss.item(), inputs.size(0))
+        acc1.update(acc_k[0].item(), inputs.size(0))}
+
+        # backward, compute gradient and do optimizer step
+        loss.backward()
+        optimizer.step()
+
+        tok = time.perf_counter() - tik
+        tiktok.update(tok, 1)
+
+        # Logging
+        ${4:if GRADIENT_STAT:
+               for tag, value in filter(lambda p: 'conv' in p[0],
+                                         net.named_parameters()):
+                    tag = tag.replace('.', '/')
+                    writer.add_histogram(tag, value.data.cpu().numpy(),
+                                         epoch * len(train_loader) + it)
+                    writer.add_histogram(tag+'/grad', value.grad.data.cpu().numpy(),
+                                         epoch * len(train_loader) + it)
+            writer.add_scalar('loss/train', losses.avg,
+                              epoch * len(train_loader) + it)
+            writer.add_scalar('acc1/train', top1.avg,
+                              epoch * len(train_loader) + it)
+
+            if it % interval == 0:
+                logger.info(f'T [{epoch}/{EPOCH}][{it:3d}/{len(train_loader)}]' +
+                            f' | loss {losses.avg:.2f} = {loss1.item():.2f} + {loss2.item():.2f} | top@1 {top1.avg:.2f}' +
+                            f' | {tiktok.avg*interval:.2f}s')}
