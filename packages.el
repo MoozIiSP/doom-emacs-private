@@ -1,14 +1,5 @@
 ;;;  -*- lexical-binding: t; -*-
 
-;;; `:enhance'
-(package! habitica)
-
-;;; `:ui'
-;;(package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab"))
-;;(add-to-list 'load-path (expand-file-name "~/.doom.d/manual"))
-;;(require 'awesome-tab)
-;;(setq awesome-tab-background-color 'blac)
-
 ;;; `:completion'
 ;; default configuration already provide `+childframe' to enable this feature.
 ;; (when (featurep! :completion helm)
@@ -18,9 +9,15 @@
 ;; `swiper-helm' is provided by `helm'.
 
 ;;; `:lang' LSP Client support
+(package! lsp)
+;;(package! lsp-ui)
+(package! company-lsp)
+(package! lsp-ivy)
+(package! lsp-python-ms)
 
 ;; TODO
-(package! lpy :recipe (:host github :repo "abo-abo/lpy"))
+;;(package! lpy :recipe (:host github :repo "abo-abo/lpy"))
+(package! pkgbuild-mode)
 
 ;; (when (featurep! :lang org)
 ;;   ;;(package! ivy-bibtex)
@@ -41,13 +38,7 @@
 ;;           :repo "jgkamat/rmsbolt"))
 
 (package! move-text :recipe (:host github :repo "manateelazycat/move-text" :files ("*")))
-(package! lsp-julia :recipe (:host github :repo "non-Jedi/lsp-julia" :files ("*")))
-(package! lsp-racket :recipe (:host github :repo "vishesh/lsp-racket.el" :files ("*")))
-
-(package! olivetti)
-
-;; `leetcode' need furl package
-(package! leetcode :recipe (:host github :repo "kaiwk/leetcode.el"))
+(package! nox :recipe (:host github :repo "manateelazycat/nox" :files ("*")))
 
 ;; wakatime
 (package! wakatime-mode :recipe (:host github :repo "wakatime/wakatime-mode" :files ("*")))
