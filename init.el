@@ -39,7 +39,7 @@
        ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabs              ; an tab bar for Emacs
        treemacs          ; TESTING a project drawer, like neotree but cooler
-       unicode           ; extended unicode support for various languages
+       ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe `git-gutter-fringe'
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB `vi-tilde-fringe'
        window-select     ; visually switch windows `ace-window'
@@ -47,7 +47,7 @@
        zen               ; distraction-free coding or writing
 
        :editor
-       file-templates
+       file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        format            ; TESTING automated prettiness
        ;;god               ; run Emacs commands without modifier keys
@@ -63,6 +63,7 @@
         +ranger)          ; bringing the goodness of ranger to dired
        electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
+       undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; TESTING version-control and Emacs, sitting in a tree
 
        :term
@@ -73,8 +74,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       spell             ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
+       ;;spell             ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
        
        :tools
        ;;debugger
@@ -85,22 +86,23 @@
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        lookup
-       ;;lsp               ; IDE-like experience
+       lsp               ; IDE-like experience
        ;;make              ; run make tasks from Emacs `makefile-executor'
        magit             ; a git procelain for Emacs
        ;;pass             ; password manager for nerds
        ;;pdf              ; pdf enhancements `pdf-tools'
-       prodigy           ; TESTING FIXME managing external services & code builders `peodigy'
+       ;;prodigy           ; managing external services & code builders `peodigy'
        rgb               ; creating color strings `rainbow-mode|kurecolor'
+       taskrunner        ; TODO taskrunner for all your projects
        ;;terraform
-       tmux              ; an API for interacting with tmux
+       ;;tmux              ; an API for interacting with tmux
        upload            ; TESTING map local to remote projects via ssh/ftp `ssh-deploy'
 
        :lang
        ;;agda
-       assembly          ; assembly for fun or debugging
-       ;;(cc               ; C/C++/Obj-C madness
-       ;; +lsp           ; TESTING
+       ;;assembly          ; assembly for fun or debugging
+       (cc               ; C/C++/Obj-C madness
+        +lsp)           ; TESTING
        ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq
@@ -108,18 +110,22 @@
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; TESTING config/data formats `graphql|json|toml|vimrc|yaml|csv|dhall'
        ;;erlang
-       ;;elixir
-       ;;elm
+       ;;(dart +flutter)   ; paint ui and not much else
+       ;;elixir            ; erlang done right
+       ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;ess               ; emacs speaks statistics
+       ;;faust             ; dsp, but you get to keep your soul
        ;;fsharp           ; ML stands for Microsoft's Language
+       ;;fstar             ; (dependent) types and (monadic) effects and Z3
+       ;;gdscript          ; the language you waited for
        ;;go                ; the hipster dialect
        ;;(haskell +dante) ; a language that's lazier than I am
        hy                ; readability of scheme w/ speed of python
        ;;idris
        ;;(java +meghanada)
        ;;javascript
-       julia             ; a better, faster MATLAB
+       ;;julia             ; a better, faster MATLAB
        ;;kotlin
        latex             ; writing papers in Emacs has never been so fun
        ;;ledger
@@ -129,21 +135,23 @@
        ;;nix
        ;;ocaml
        (org              ; organize your plain life in plain text
+        ;;+brain
         +dragndrop       ; file drag & drop support
         +hugo            ; use Emacs for hugo blogging
         +gnuplot
         +ipython         ; ipython support for babel
         +pandoc          ; pandoc integration into org's exporter
-        +pomodoro        ; be fruitful with the tomato technique
-        +present)        ; using Emacs for presentations
+        +roam
+        +pomodoro)        ; be fruitful with the tomato technique
        ;;perl              ; write code no one else can comprehend
        ;;php
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript
-       ;; (python           ; beautiful is better than ugly
-       ;;  ;;+lsp             ; lsp support
-       ;;  +conda           ; scientific package management
-       ;;  +cython)         ; Cython files support
+       (python           ; beautiful is better than ugly
+        +lsp             ; lsp support
+        +pyright
+        +conda           ; scientific package management
+        +cython)         ; Cython files support
        qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
@@ -161,26 +169,12 @@
        ;;notmuch
        ;;(wanderlust +gmail)
 
-       ;; Applications are complex and opinionated modules that transform Emacs
-       ;; toward a specific purpose. They may have additional dependencies and
-       ;; should be loaded late.
        :app
-       calendar
+       ;;calendar
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       ;; For literate config users. This will tangle+compile a config.org
-       ;; literate config in your `doom-private-dir' whenever it hanges.
-       ;;literate
-
-       ;; The default module set reasonable defaults for Emacs. It also provides
-       ;; a Spacemacs-inspired keybinding scheme, a custom yasnippet library,
-       ;; and additional ex commands for evil-mode. Use it as a reference for
-       ;; your own modules.
-       ;; old: (default +bindings +snippets +evil-commands))
-       ;; last edit: (default +bindings +snippets)
-       ;; literate
        (default +bindings +smartparens))
        

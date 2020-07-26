@@ -1,0 +1,12 @@
+[submodule "site-lisp/extensions/emacs-application-framework"]
+	path = site-lisp/extensions/emacs-application-framework
+	url = https://github.com/manateelazycat/emacs-application-framework
+[submodule "site-lisp/extensions/calibre-mode"]
+	path = site-lisp/extensions/calibre-mode
+	url = https://github.com/whacked/calibre-mode
+[submodule "calibredb"]
+	path = calibredb
+	url = https://github.com/chenyanming/calibredb.el
+[submodule "site-lisp/extensions/calibredb"]
+	path = site-lisp/extensions/calibredb
+	url = https://github.com/chenyanming/calibredb.el
