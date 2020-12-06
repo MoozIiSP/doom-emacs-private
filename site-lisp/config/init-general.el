@@ -1,5 +1,5 @@
 ;;; Doom Configuration
-(setq doom-theme 'doom-Iosvkem) ;; 'doom-oceanic-next)
+(setq doom-theme 'doom-material) ;; 'doom-oceanic-next)
 ;; 'doom-city-lights
 ;; 'doom-acario-dark
 ;; 'doom-spacegrey
@@ -8,7 +8,8 @@
 ;; 'doom-Iosvkem
 ;; 'doom-nord
 
-(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 18))
+;; font size: 18 (default)
+(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 25))
       ;; doom-variable-pitch-font (font-spec :family "等距更纱黑体 T SC"
       ;;                                     :size 11
       ;;                                     :width 'extra-condensed

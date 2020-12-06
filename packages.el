@@ -1,10 +1,16 @@
 ;;;  -*- lexical-binding: t; -*-
 
+;;; `IME'
+(package! rime :recipe (:host github
+                        :repo "DogLooksGood/emacs-rime"
+                        :files ("*.el" "Makefile" "lib.c")))
+
 ;;; `Note' Note Enhancement
 (package! mathpix :recipe (:host github :repo "jethrokuan/mathpix.el"))
 (package! zotxt-emacs :recipe (:host github :repo "egh/zotxt-emacs"))
 (package! calibredb :recipe (:host github :repo "chenyanming/calibredb.el" :files ("*.el")))
 (package! org-ref :recipe (:host github :repo "jkitchin/org-ref"))
+(package! org-roam-server)
 
 ;;; `Coding' LSP Client support
 (package! nox :recipe (:host github :repo "manateelazycat/nox" :files ("*")))

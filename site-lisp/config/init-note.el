@@ -34,8 +34,8 @@ unwanted space when exporting org-mode to html."
 ;;; TODO `org-capture'
 ;; capture note and inspiron.
 ;; (require 'org-protocol)
-(setq org-directory "~/GitRepos/philosophers-stone")
-(setq org-agenda-files '("~/GitRepos/philosophers-stone/"))
+(setq org-directory "~/GitRepos/philosophers-stone-old")
+(setq org-agenda-files '("~/GitRepos/philosophers-stone-old/"))
 (setq org-capture-templates
       `(;; 存放在相应headline节点下，%i的作用是？%a是一个ref链接
         ("n" "Note" entry (file+olp+datetree ,(expand-file-name "inbox.org" org-directory))
@@ -52,8 +52,8 @@ unwanted space when exporting org-mode to html."
          :prepend t)))
 
 
-;;; `deft'
-(setq deft-directory "~/GitRepos/philosophers-stone/draft")
+;;; FIXME `deft'
+(setq deft-directory "~/GitRepos/philosophers-stone-old/roam")
 (setq deft-recursive t)
 
 
@@ -73,7 +73,7 @@ unwanted space when exporting org-mode to html."
 
 ;;; `org-download'
 (if (eq CURRECT-OS 'wsl)
-    (setq org-download-screenshot-method "~/.doom.d/bin/emacs-screenshot")
+    (setq org-download-screenshot-method "~/.doom.d/bin/emacs-screenshot $s")
   (setq org-download-screenshot-method "spectacle -r -b -o %s"))
 
 ;;; `org-roam'
@@ -81,7 +81,7 @@ unwanted space when exporting org-mode to html."
   :hook
   (after-init . org-roam-mode)
   :custom
-  (org-roam-directory "~/GitRepos/philosophers-stone/draft"))
+  (org-roam-directory "~/GitRepos/philosophers-stone-old/roam"))
 
 
 ;;; `zotxt-emacs'
@@ -110,19 +110,24 @@ unwanted space when exporting org-mode to html."
         (if zotxt--debug-sync (deferred:sync! it))))))
 
 
-;;; `mathpix'
-(load-library "~/.doom.d/site-lisp/config/init-mathpix.el.gpg")
+;;; FIXME `mathpix'
+(use-package! mathpix
+  :custom ((mathpix-screenshot-method "~/.doom.d/bin/emacs-screenshot %s"))
+  :config
+  (defun mathpix/init (&optional arg)
+    (interactive "P")
+    (load-file "init-mathpix.el.gpg")))
 
 
 ;;; `org-ref'
 (use-package! org-ref
   :config
-  (setq reftex-default-bibliography '("~/GitRepos/philosophers-stone/bibtex/references.bib"))
+  (setq reftex-default-bibliography '("~/GitRepos/philosophers-stone-old/bibtex/references.bib"))
 
   ;; see org-ref for use of these variables
-  (setq org-ref-bibliography-notes "~/GitRepos/philosophers-stone/bibtex/notes.org"
-        org-ref-default-bibliography '("~/GitRepos/philosophers-stone/bibtex/references.bib")
-        org-ref-pdf-directory "~/GitRepos/philosophers-stone/bibtex/bibtex-pdfs/"))
+  (setq org-ref-bibliography-notes "~/GitRepos/philosophers-stone-old/bibtex/notes.org"
+        org-ref-default-bibliography '("~/GitRepos/philosophers-stone-old/bibtex/references.bib")
+        org-ref-pdf-directory "~/GitRepos/philosophers-stone-old/bibtex/bibtex-pdfs/"))
 
 
 ;;; `calibre'
@@ -130,10 +135,23 @@ unwanted space when exporting org-mode to html."
 (use-package! calibredb
   :config
   (setq sql-sqlite-program "/usr/bin/sqlite3"
-        calibredb-root-dir (expand-file-name "~/Calibre")
+        calibredb-root-dir (expand-file-name "Calibre")
         calibredb-db-dir (concat calibredb-root-dir "/metadata.db")
         calibredb-program "/usr/bin/calibredb"))
 
+
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-export-inline-images t
+        org-roam-server-authenticate nil
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
         
 ;;; org-brain
 ;; (setq org-id-locations-file (concat org-directory "/.org-id-locations"))

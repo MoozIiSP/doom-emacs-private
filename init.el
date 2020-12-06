@@ -1,4 +1,4 @@
-;;; init.el -*- lexical-binding: t; -*-
+;;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 ;; (setq package-archives
 ;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
@@ -26,10 +26,13 @@
        doom              ; what makes DOOM look the way it does `doom-themes|solaire-mode'
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;;fill-column
+       (emoji +unicode)  ; 🙂
+       ;;fill-column     ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        ;;hydra
-       ;;indent-guides
+       ;;indent-guides     ; highlighted indent columns
+       ligatures         ; ligatures and symbols to make your code pretty again
+       ;;minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -53,7 +56,7 @@
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; TESTING vim for lisp, for people who dont like vim
        multiple-cursors  ; TESTING editing in many places at once
-       parinfer          ; TESTING turn lisp into python, sort of
+       ;parinfer          ; TESTING turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates `rotate-text'
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
@@ -93,10 +96,14 @@
        ;;pdf              ; pdf enhancements `pdf-tools'
        ;;prodigy           ; managing external services & code builders `peodigy'
        rgb               ; creating color strings `rainbow-mode|kurecolor'
-       taskrunner        ; TODO taskrunner for all your projects
+       ;;taskrunner        ; TODO taskrunner for all your projects
        ;;terraform
        ;;tmux              ; an API for interacting with tmux
        upload            ; TESTING map local to remote projects via ssh/ftp `ssh-deploy'
+
+       :os
+       ;;(:if IS-MAC macos)  ; improve compatibility with macOS
+       tty               ; improve the terminal Emacs experience
 
        :lang
        ;;agda
@@ -121,7 +128,7 @@
        ;;gdscript          ; the language you waited for
        ;;go                ; the hipster dialect
        ;;(haskell +dante) ; a language that's lazier than I am
-       hy                ; readability of scheme w/ speed of python
+       ;;hy                ; readability of scheme w/ speed of python
        ;;idris
        ;;(java +meghanada)
        ;;javascript
@@ -163,6 +170,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web               ; the tubes
+       yaml              ; JSON, but readable
        
        :email
        ;;(mu4e +gmail)
