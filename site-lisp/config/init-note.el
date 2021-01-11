@@ -125,34 +125,34 @@ unwanted space when exporting org-mode to html."
 (setq words-count-messages-display 'pos-tip)
 
 
-;;; FIXME `mathpix'
-(use-package! mathpix
-  :custom ((mathpix-screenshot-method "~/.doom.d/bin/emacs-screenshot %s"))
-  :config
-  (defun mathpix/init (&optional arg)
-    (interactive "P")
-    (load-file "init-mathpix.el.gpg")))
+;; ;;; FIXME `mathpix'
+;; (use-package! mathpix
+;;   :custom ((mathpix-screenshot-method "~/.doom.d/bin/emacs-screenshot %s"))
+;;   :config
+;;   (defun mathpix/init (&optional arg)
+;;     (interactive "P")
+;;     (load-file "init-mathpix.el.gpg")))
 
 
-;;; `org-ref'
-(use-package! org-ref
-  :config
-  (setq reftex-default-bibliography '("~/GitRepos/philosophers-stone-old/bibtex/references.bib"))
+;; ;;; `org-ref'
+;; (use-package! org-ref
+;;   :config
+;;   (setq reftex-default-bibliography '("~/GitRepos/philosophers-stone-old/bibtex/references.bib"))
 
-  ;; see org-ref for use of these variables
-  (setq org-ref-bibliography-notes "~/GitRepos/philosophers-stone-old/bibtex/notes.org"
-        org-ref-default-bibliography '("~/GitRepos/philosophers-stone-old/bibtex/references.bib")
-        org-ref-pdf-directory "~/GitRepos/philosophers-stone-old/bibtex/bibtex-pdfs/"))
+;;   ;; see org-ref for use of these variables
+;;   (setq org-ref-bibliography-notes "~/GitRepos/philosophers-stone-old/bibtex/notes.org"
+;;         org-ref-default-bibliography '("~/GitRepos/philosophers-stone-old/bibtex/references.bib")
+;;         org-ref-pdf-directory "~/GitRepos/philosophers-stone-old/bibtex/bibtex-pdfs/"))
 
 
 ;;; `calibre'
 ;;; buggy, `calibredb-list' slow when your db is too big to show all content
-(use-package! calibredb
-  :config
-  (setq sql-sqlite-program "/usr/bin/sqlite3"
-        calibredb-root-dir (expand-file-name "Calibre")
-        calibredb-db-dir (concat calibredb-root-dir "/metadata.db")
-        calibredb-program "/usr/bin/calibredb"))
+;; (use-package! calibredb
+;;  :config
+;;  (setq sql-sqlite-program "/usr/bin/sqlite3"
+;;        calibredb-root-dir (expand-file-name "Calibre")
+;;        calibredb-db-dir (concat calibredb-root-dir "/metadata.db")
+;;        calibredb-program "/usr/bin/calibredb"))
 
 
 ;; (use-package org-roam-server

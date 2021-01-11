@@ -2,7 +2,7 @@
 (setq doom-theme 'doom-nord-light)
 
 ;; font size: 18 (default)
-(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 26))
+(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 13))
       ;; doom-variable-pitch-font (font-spec :family "等距更纱黑体 T SC"
       ;;                                     :size 11
       ;;                                     :width 'extra-condensed

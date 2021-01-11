@@ -9,7 +9,7 @@
     (normal-top-level-add-subdirs-to-load-path)))
 (add-subdirs-to-load-path "~/.doom.d/site-lisp")
 
-(toggle-frame-fullscreen)
+;; (toggle-frame-fullscreen)
 
 ;; ensure whether platform
 (cond ((eq system-type 'gnu/linux)
