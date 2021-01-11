@@ -65,7 +65,7 @@
        (dired             ; making dired pretty [functional]
         +ranger)          ; bringing the goodness of ranger to dired
        electric          ; smarter, keyword-based electric-indent
-       ibuffer           ; interactive buffer management
+       ;;ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; TESTING version-control and Emacs, sitting in a tree
 
@@ -148,8 +148,8 @@
         +gnuplot
         +ipython         ; ipython support for babel
         +pandoc          ; pandoc integration into org's exporter
-        +roam
-        +pomodoro)        ; be fruitful with the tomato technique
+        +pretty
+        +roam)
        ;;perl              ; write code no one else can comprehend
        ;;php
        ;;plantuml          ; diagrams for confusing people more

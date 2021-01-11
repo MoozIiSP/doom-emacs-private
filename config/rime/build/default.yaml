@@ -1,11 +1,11 @@
 __build_info:
   rime_version: 1.6.1
   timestamps:
-    default: 1599578333
+    default: 1607860193
     default.custom: 0
-    key_bindings: 1599578333
+    key_bindings: 1607860193
     key_bindings.custom: 0
-    punctuation: 1599578333
+    punctuation: 1607860193
     punctuation.custom: 0
 ascii_composer:
   good_old_caps_lock: true
@@ -30,6 +30,7 @@ key_binder:
     - {accept: "Control+h", send: BackSpace, when: composing}
     - {accept: "Control+g", send: Escape, when: composing}
     - {accept: "Control+bracketleft", send: Escape, when: composing}
+    - {accept: "Control+y", send: Page_Up, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
     - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}

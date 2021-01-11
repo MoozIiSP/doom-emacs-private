@@ -28,25 +28,12 @@
          (message "Emacs runing on OS X now.")
          (setq CURRECT-OS 'drawin))))
 
-;; enable native comp
-;;(setq comp-deferred-compilation t)
-;;(setq comp-speed 3)
-;;(native-compile-async "~/.emacs.d/.local/" <n> t)
-;;(native-compile-async "~/.doom.d/site-lisp" t)
-
 (require 'init-general)
 (require 'init-ui-enhance)
 
-;;(run-with-idle-timer
-;; 1 nil
-;; #'(lambda ()
 (require 'init-note)               ;; 笔记系统
-;; (require 'init-lsp)
-;; (require 'init-nox)
-(require 'init-python)             ;; disable some custom package
-(require 'init-prog-mode)
+(require 'init-lsp)
 ;; (require 'init-eaf)              ;; disable for WSL
-(require 'init-input)
-;;(require 'init-wakatime)
+(require 'init-wakatime)
 
 (server-start)

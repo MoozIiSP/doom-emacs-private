@@ -1,15 +1,8 @@
 ;;; Doom Configuration
-(setq doom-theme 'doom-material) ;; 'doom-oceanic-next)
-;; 'doom-city-lights
-;; 'doom-acario-dark
-;; 'doom-spacegrey
-;; 'doom-material
-;; 'doom-gruvbox
-;; 'doom-Iosvkem
-;; 'doom-nord
+(setq doom-theme 'doom-nord-light)
 
 ;; font size: 18 (default)
-(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 25))
+(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 26))
       ;; doom-variable-pitch-font (font-spec :family "等距更纱黑体 T SC"
       ;;                                     :size 11
       ;;                                     :width 'extra-condensed
@@ -57,6 +50,29 @@
   "Open doom custom configuration in Dired"
   (interactive)
   (dired-at-point "~/.doom.d"))
+
+;;; doom-dashboard
+;; (setq +doom-dashboard-banner-dir "~/.doom.d/banners/"
+;;       +doom-dashboard-banner-file "amadeuslogo.png")
+(setq fancy-splash-image "~/.doom.d/banners/amadeuslogo.png")
+;; (doom-dashboard-widget-footer)
+;; Emacs  Doom
+;;                                        
+
+;; (insert
+;;  "\n"
+;;  (+doom-dashboard--center
+;;   (- +doom-dashboard--width 2)
+;;   (with-temp-buffer
+;;     (insert-text-button (or (all-the-icons-faicon "gratipay" :face 'doom-dashboard-footer-icon :height 1.3 :v-adjust -0.15)
+;;                             (propertize "Doom Emacs" 'face 'doom-dashboard-footer))
+;;                         'action (lambda (_) (browse-url "https://github.com/hlissner/doom-emacs"))
+;;                         'follow-link t
+;;                         'help-echo "Open Doom Emacs Github Page")
+;;     (buffer-string)))
+;;  "\n")
+
+
 
 ;;; for remote lsp
 (setq password-cache-expiry nil)

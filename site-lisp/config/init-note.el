@@ -1,5 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
+;;; Input Method
+(use-package! rime
+  :config
+  (progn
+    (setq default-input-method "rime"
+          rime-show-candidate 'posframe
+          rime-posframe-style 'vertical
+          rime-user-data-dir "~/.doom.d/config/rime/")
+    (after! rime-mode
+      (rime-lib-select-schema "luna_pinyin_simp"))))
+
 ;;; 笔记系统
 ;;; `Org-mode'
 (setq default-justification 'full)
@@ -28,14 +39,14 @@ unwanted space when exporting org-mode to html."
 
 
 ;;; `Org-bullets'
-(setq org-superstar-headline-bullets-list '("§"))
+(setq org-superstar-headline-bullets-list '("•"))
 
 
 ;;; TODO `org-capture'
 ;; capture note and inspiron.
 ;; (require 'org-protocol)
-(setq org-directory "~/GitRepos/philosophers-stone-old")
-(setq org-agenda-files '("~/GitRepos/philosophers-stone-old/"))
+(setq org-directory "~/GitRepos/philosophers-stone")
+(setq org-agenda-files '("~/GitRepos/philosophers-stone/"))
 (setq org-capture-templates
       `(;; 存放在相应headline节点下，%i的作用是？%a是一个ref链接
         ("n" "Note" entry (file+olp+datetree ,(expand-file-name "inbox.org" org-directory))
@@ -53,7 +64,7 @@ unwanted space when exporting org-mode to html."
 
 
 ;;; FIXME `deft'
-(setq deft-directory "~/GitRepos/philosophers-stone-old/roam")
+(setq deft-directory "~/GitRepos/philosophers-stone")
 (setq deft-recursive t)
 
 
@@ -73,15 +84,16 @@ unwanted space when exporting org-mode to html."
 
 ;;; `org-download'
 (if (eq CURRECT-OS 'wsl)
-    (setq org-download-screenshot-method "~/.doom.d/bin/emacs-screenshot $s")
+    (setq org-download-screenshot-method "/home/mooziisp/.doom.d/bin/emacs-screenshot %s")
   (setq org-download-screenshot-method "spectacle -r -b -o %s"))
+
 
 ;;; `org-roam'
 (use-package! org-roam
   :hook
   (after-init . org-roam-mode)
   :custom
-  (org-roam-directory "~/GitRepos/philosophers-stone-old/roam"))
+  (org-roam-directory "~/GitRepos/philosophers-stone"))
 
 
 ;;; `zotxt-emacs'
@@ -108,6 +120,9 @@ unwanted space when exporting org-mode to html."
               (eaf-open (org-zotxt-choose-path paths) arg))))
         (deferred:error it #'zotxt--deferred-handle-error)
         (if zotxt--debug-sync (deferred:sync! it))))))
+
+
+(setq words-count-messages-display 'pos-tip)
 
 
 ;;; FIXME `mathpix'
@@ -140,18 +155,18 @@ unwanted space when exporting org-mode to html."
         calibredb-program "/usr/bin/calibredb"))
 
 
-(use-package org-roam-server
-  :ensure t
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-export-inline-images t
-        org-roam-server-authenticate nil
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
+;; (use-package org-roam-server
+;;   :ensure t
+;;   :config
+;;   (setq org-roam-server-host "127.0.0.1"
+;;         org-roam-server-port 8080
+;;         org-roam-server-export-inline-images t
+;;         org-roam-server-authenticate nil
+;;         org-roam-server-network-poll t
+;;         org-roam-server-network-arrows nil
+;;         org-roam-server-network-label-truncate t
+;;         org-roam-server-network-label-truncate-length 60
+;;         org-roam-server-network-label-wrap-length 20))
         
 ;;; org-brain
 ;; (setq org-id-locations-file (concat org-directory "/.org-id-locations"))

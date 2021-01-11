@@ -10,6 +10,7 @@
 (package! zotxt-emacs :recipe (:host github :repo "egh/zotxt-emacs"))
 (package! calibredb :recipe (:host github :repo "chenyanming/calibredb.el" :files ("*.el")))
 (package! org-ref :recipe (:host github :repo "jkitchin/org-ref"))
+(package! advance-words-count :recipe (:host github :repo "LdBeth/advance-words-count.el" :files ("*.el")))
 (package! org-roam-server)
 
 ;;; `Coding' LSP Client support

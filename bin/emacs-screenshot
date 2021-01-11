@@ -4,5 +4,5 @@ if test (count $argv) -lt 0
     exit 0
 end
 
-# Read image data based base64 and decode
-~/.doom.d/bin/Clip4Emacs/Clip4Emacs.exe -o string | base64 -d > $argv[1]
+# Read base64 based image data and decode
+$HOME/.doom.d/bin/Clip4Emacs/Clip4Emacs.exe -o string | base64 -d > $argv[1]
