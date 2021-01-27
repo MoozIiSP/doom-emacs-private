@@ -1,4 +1,4 @@
-;;;  -*- lexical-binding: t; -*-
+;; packages.el -*- no-byte-compile: t; -*-
 
 ;;; `IME'
 (package! rime :recipe (:host github
@@ -14,19 +14,19 @@
 (package! org-roam-server)
 
 ;;; `Coding' LSP Client support
-(package! nox :recipe (:host github :repo "manateelazycat/nox" :files ("*")))
-;; (package! lsp)
-;; (package! lsp-ui)
-;; (package! company-lsp)
-;; (package! lsp-ivy)
-;; (package! lsp-python-ms)
 (package! move-text :recipe (:host github :repo "manateelazycat/move-text" :files ("*")))
-(package! pkgbuild-mode)
 ;;(package! rmsbolt :recipe (:fetcher gitlab :repo "jgkamat/rmsbolt"))
 ;; (quelpa '(rmsbolt
 ;;           :files (:defaults "starters")
 ;;           :fetcher gitlab
 ;;           :repo "jgkamat/rmsbolt"))
 
+;;; `eaf' extension
+(if (and (not (string-match-p "-[Mm]icrosoft" operating-system-release))
+         (not IS-MAC))
+    (package! eaf :recipe (:host github
+                           :repo  "manateelazycat/emacs-application-framework"
+                           :files ("*"))))
+
 ;;; `Stat' wakatime
-(package! wakatime-mode :recipe (:host github :repo "wakatime/wakatime-mode" :files ("*")))
+(package! wakatime-mode :recipe (:host github :repo "wakatime/wakatime-mode" :files ("*.el")))

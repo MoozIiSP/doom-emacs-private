@@ -1,5 +1,6 @@
+;;; site-lisp/config/init-eaf.el -*- lexical-binding: t; -*-
+
 (use-package! eaf
-  ;;:load-path "~/.doom.d/site-lisp/extensions/emacs-application-framework"
   :custom
   (eaf-find-alternate-file-in-dired t)
   :config
@@ -9,6 +10,3 @@
   (setq eaf-proxy-type "socks5")
   (setq eaf-proxy-host "127.0.0.1")
   (setq eaf-proxy-port "1080"))
-
-
-(provide 'init-eaf)

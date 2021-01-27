@@ -18,7 +18,8 @@
         +fuzzy           ; enable fuzzy search backend for ivy
         +prescient       ; enables prescient filtering and sorting for Ivy searches.
         +childframe      ; Causes Ivy to display in a floating child frame, above Emacs.
-        +icons)          ; Enables file icons for switch-{buffer,project}/find-file counsel commands.
+       ;;+icons           ; Enables file icons for switch-{buffer,project}/find-file counsel commands.
+       )
 
        :ui
        deft              ; notational velocity for Emacs
@@ -49,10 +50,10 @@
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        format            ; TESTING automated prettiness
-       god               ; TESTING run Emacs commands without modifier keys
-       lispy             ; TESTING vim for lisp, for people who dont like vim
+       ;;god               ; TESTING run Emacs commands without modifier keys
+       ;;lispy             ; TESTING vim for lisp, for people who dont like vim
        ;;multiple-cursors  ; TESTING editing in many places at once
-       objed             ; TESTING text object editing for the innocent
+       ;;objed             ; TESTING text object editing for the innocent
        ;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates `rotate-text'
        snippets          ; my elves. They type so I don't have to
@@ -79,7 +80,7 @@
        
        :tools
        biblio              ; better writing experience for writing bibtex
-       debugger            ; TESTING stepping through code, to help you add bugs
+       (debugger +lsp)     ; TESTING stepping through code, to help you add bugs
        direnv
        docker
        editorconfig      ; TESTING let someone else argue about tabs vs spaces `editorconfig'
@@ -140,7 +141,7 @@
        ;;lua               ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
        nim                 ; python + lisp at the speed of c
-       nix                 ; I hereby declare "nix geht mehr!"
+       ;;nix                 ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         ;;+brain
