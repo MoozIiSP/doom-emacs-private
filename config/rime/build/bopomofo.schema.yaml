@@ -1,15 +1,16 @@
 __build_info:
-  rime_version: 1.6.1
+  rime_version: 1.7.3
   timestamps:
     bopomofo.custom: 0
-    bopomofo.schema: 1609611675
-    default: 1607860193
+    bopomofo.schema: 1612175965
+    default: 1624840803
     default.custom: 0
-    key_bindings: 1607860193
+    grammar: 0
+    key_bindings: 1624840803
     key_bindings.custom: 0
-    punctuation: 1607860193
+    punctuation: 1624840803
     punctuation.custom: 0
-    zhuyin: 1609611675
+    zhuyin: 1612175965
     zhuyin.custom: 0
 custom_phrase:
   db_class: stabledb
@@ -201,7 +202,7 @@ schema:
     
   name: "注音"
   schema_id: bopomofo
-  version: 2.3
+  version: 2.4
 speller:
   algebra:
     - "xform/^m(\\d)$/mu$1/"

@@ -19,7 +19,8 @@
         +prescient       ; enables prescient filtering and sorting for Ivy searches.
         +childframe      ; Causes Ivy to display in a floating child frame, above Emacs.
        ;;+icons           ; Enables file icons for switch-{buffer,project}/find-file counsel commands.
-       )
+	)
+       vertico           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -79,7 +80,7 @@
        ;;grammar           ; tasing grammar mistake every you make
        
        :tools
-       biblio              ; better writing experience for writing bibtex
+       ;;biblio              ; better writing experience for writing bibtex
        (debugger +lsp)     ; TESTING stepping through code, to help you add bugs
        direnv
        docker
@@ -151,7 +152,7 @@
         +ipython           ; ipython support for babel
         +pandoc            ; pandoc integration into org's exporter
         +pretty
-        +roam)
+        +roam2)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

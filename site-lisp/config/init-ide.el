@@ -51,17 +51,66 @@ returns the command to execute."
         :test? (lambda () (-> local-command lsp-resolve-final-function
                               lsp-server-present?))))
 
+;; (lsp-register-client
+;;  (make-lsp-client
+;;   :new-connection (lsp-tramp-connection-new
+;;                    (lambda () (cons "pyright-langserver" lsp-pyright-langserver-command-args)))
+;;   :major-modes '(python-mode)
+;;   :remote? t
+;;   :server-id  'pyright-remote
+;;   :initialization-options (lambda () (ht-merge (lsp-configuration-section "pyright")
+;;                                           (lsp-configuration-section "python")))
+;;   :initialized-fn (lambda (workspace)
+;;                     (with-lsp-workspace workspace
+;;                       (lsp--set-configuration
+;;                        (ht-merge (lsp-configuration-section "pyright")
+;;                                  (lsp-configuration-section "python")))))
+;;   :download-server-fn (lambda (_client callback error-callback _update?)
+;;                         (lsp-package-ensure 'pyright callback error-callback))
+;;   :notification-handlers (lsp-ht ("pyright/beginProgress" 'lsp-pyright--begin-progress-callback)
+;;                                  ("pyright/reportProgress" 'lsp-pyright--report-progress-callback)
+;;                                  ("pyright/endProgress" 'lsp-pyright--end-progress-callback))))
+ (defun register-pyright ()
+       (interactive)
+       ;; (lsp-register-client (make-lsp-client :new-connection (lsp-tramp-connection "pyright")
+       ;; 				    :major-modes '(python-mode)
+       ;; 				    :remote? t
+       ;; 				    :multi-root t
+       ;; 				    :server-id 'pyright-remote)))
+       (setq lsp-log-io t)
+       (lsp-register-client
+	 (make-lsp-client
+	   :new-connection (lsp-tramp-connection (lambda ()
+					 (cons "pyright-langserver"
+					       lsp-pyright-langserver-command-args)))
+	   :major-modes '(python-mode)
+	   :remote? t
+	   :server-id 'pyright-remote
+	   :multi-root nil
+	   :priority 3
+    :initialization-options (lambda () (ht-merge (lsp-configuration-section "pyright")
+							(lsp-configuration-section "python")))
+	   :initialized-fn (lambda (workspace)
+			     (with-lsp-workspace workspace
+			       (lsp--set-configuration
+			       (ht-merge (lsp-configuration-section "pyright")
+					 (lsp-configuration-section "python")))))
+	   :download-server-fn (lambda (_client callback error-callback _update?)
+			       (lsp-package-ensure 'pyright callback error-callback))
+	   :notification-handlers (lsp-ht ("pyright/beginProgress" 'lsp-pyright--begin-progress-callback)
+				       ("pyright/reportProgress" 'lsp-pyright--report-progress-callback)
+				       ("pyright/endProgress" 'lsp-pyright--end-progress-callback)))))
+
 (after! lsp!
   (progn
     ;; register for python on remote machine
     (lsp-register-client
      (make-lsp-client
-      :new-connection (lsp-tramp-connection-new
+      :new-connection (lsp-tramp-connection
                        (lambda () (cons "pyright-langserver" lsp-pyright-langserver-command-args)))
       :major-modes '(python-mode)
       :remote? t
       :server-id  'pyright-remote
-      :priority    3
       :initialization-options (lambda () (ht-merge (lsp-configuration-section "pyright")
                                                    (lsp-configuration-section "python")))
       :initialized-fn (lambda (workspace)
@@ -86,7 +135,7 @@ returns the command to execute."
     ;;   :priority     3))
     (lsp-register-client
      (make-lsp-client
-      :new-connection (lsp-tramp-connection-new (lambda () (cons ccls-executable ccls-args)))
+      :new-connection (lsp-tramp-connection (lambda () (cons ccls-executable ccls-args)))
       :major-modes '(c-mode c++-mode cuda-mode objc-mode)
       :remote? t
       :server-id   'ccls-remote

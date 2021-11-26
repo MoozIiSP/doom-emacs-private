@@ -1,14 +1,15 @@
 __build_info:
-  rime_version: 1.6.1
+  rime_version: 1.7.3
   timestamps:
-    default: 1607860193
+    default: 1624840803
     default.custom: 0
-    key_bindings: 1607860193
+    grammar: 0
+    key_bindings: 1624840803
     key_bindings.custom: 0
-    punctuation: 1607860193
+    punctuation: 1624840803
     punctuation.custom: 0
     terra_pinyin.custom: 0
-    terra_pinyin.schema: 1603030662
+    terra_pinyin.schema: 1628148952
 custom_phrase:
   db_class: stabledb
   dictionary: ""
@@ -203,10 +204,9 @@ schema:
     
   name: "地球拼音"
   schema_id: terra_pinyin
-  version: 0.19
+  version: 0.20
 speller:
   algebra:
-    - "erase/^xx$/"
     - "xform/^r5$/er5/"
     - "abbrev/^([a-z]).+$/$1/"
     - "abbrev/^([zcs]h).+$/$1/"

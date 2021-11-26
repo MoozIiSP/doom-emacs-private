@@ -22,11 +22,11 @@
 ;;           :repo "jgkamat/rmsbolt"))
 
 ;;; `eaf' extension
-(if (and (not (string-match-p "-[Mm]icrosoft" operating-system-release))
-         (not IS-MAC))
-    (package! eaf :recipe (:host github
-                           :repo  "manateelazycat/emacs-application-framework"
-                           :files ("*"))))
+(package! eaf :recipe (:host github
+                       :repo  "manateelazycat/emacs-application-framework"
+                       :files ("*")))
 
 ;;; `Stat' wakatime
 (package! wakatime-mode :recipe (:host github :repo "wakatime/wakatime-mode" :files ("*.el")))
+
+;;; `Guix'

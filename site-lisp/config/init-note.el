@@ -81,7 +81,8 @@ unwanted space when exporting org-mode to html."
   :hook
   (after-init . org-roam-mode)
   :custom
-  (org-roam-directory "~/GitRepos/philosophers-stone"))
+  (org-roam-directory "~/GitRepos/philosophers-stone")
+  (org-roam-dailies-directory "~/GitRepos/philosophers-stone/journals"))
 
 
 ;;; `zotxt-emacs'
