@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Latex: insert equation
-# key: beq
-# --
-
-\begin{equation}
-  $1
-\end{equation}
