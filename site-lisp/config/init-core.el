@@ -9,13 +9,13 @@
 ;;     (setq font-size 26)
 ;;   (setq font-size 13))
 ;; FIXME: just for disabling wslg hidpi
-(setq doom-font (font-spec :family "等距更纱黑体 SC" :size 24))
-      ;; doom-variable-pitch-font (font-spec :family "等距更纱黑体 T SC"
-      ;;                                     :size 11
-      ;;                                     :width 'extra-condensed
-      ;;                                     :weight 'normal
-      ;;                                     :slant 'normal))
-      ;; If you enable `unicode', then Doom will ignore the `doom-unicode-font'
-      ;; variable and the `unicode-font' setting.
-      ;;doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 18))
-      ;;doom-big-font (font-spec :family "Sarasa Mono T SC" :size 20))
+;; (setq doom-font (font-spec :family "等距更纱黑体 SC" :size 13)
+;;       doom-variable-pitch-font (font-spec :family "等距更纱黑体 SC"
+;;                                           :size 11
+;;                                           :width 'extra-condensed
+;;                                           :weight 'normal
+;;                                           :slant 'normal)
+;;       ;; If you enable `unicode', then Doom will ignore the `doom-unicode-font'
+;;       ;; variable and the `unicode-font' setting.
+;;       doom-unicode-font (font-spec :family "Sarasa Mono T SC" :size 13)
+;;       doom-big-font (font-spec :family "Sarasa Mono T SC" :size 16))

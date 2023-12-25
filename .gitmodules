@@ -1,4 +1,0 @@
-[submodule "site-lisp/extensions/emacs-application-framework"]
-	path = site-lisp/extensions/emacs-application-framework
-	url = https://github.com/manateelazycat/emacs-application-framework.git
-

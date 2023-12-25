@@ -6,4 +6,3 @@
 (load! "site-lisp/config/init-note")
 (load! "site-lisp/config/init-ide")
 (load! "site-lisp/config/init-ime")
-;;(load! "site-lisp/config/init-eaf")
